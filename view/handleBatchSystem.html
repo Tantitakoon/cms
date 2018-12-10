@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="../asset/css/datetimepicker.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="../asset/js/datetimepicker.js"></script>
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#picker').dateTimePicker();
+            $('#picker-no-time').dateTimePicker({ showTime: false, dateFormat: 'DD/MM/YYYY' });
+        })
+    </script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-md-center" style="padding-top: 15px;">
+            <img src="../asset/img/index.jpg" class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="row justify-content-md-center" style="padding-top: 25px;">
+            <h1>HAll Online Post Processing System </h1>
+        </div>
+    </div>
+    <div class="container">
+        <h4>Setting Batch</h4>
+        <div class="row justify-content-md-center" style="padding-top: 25px;">
+                <div class="col-md-1"></div>
+            <div class="col-md-3">
+            <h5>เวลาการ Runtime Batch</h5>
+            </div>
+            
+            <div class="col" style="width: 250px; margin: 0px ">
+                <div id="picker"> </div>
+                <input type="hidden" id="result" value="" />
+            </div>
+        </div>
+         <div class="row justify-content-md-center" style="padding-top: 25px;">
+                <div class="col-md-1"></div>
+                <div class="col-md-4"></div>
+             <div  class="col">
+                    <button type="button" class="btn btn-dark">UPDATE</button>
+            </div>
+         </div>
+         <hr>  
+         <div class="row justify-content-md-center" style="padding-top: 25px;">
+             <div class="col-md-1"></div>
+             <div class="col-md-4">
+                <h5>Manual Batch</h5>
+                </div>
+               
+                <div class="col">
+                        <button type="button" class="btn btn-dark">Manual Batch</button>
+                </div>
+                
+              
+         </div>
+    </div>
+
+</body>
+
+</html>
