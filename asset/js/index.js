@@ -36,12 +36,12 @@ $(document).ready(function () {
         </div>
          <div class="row justify-content-md-center" style="padding-top: 15px;" >
             <div class="col-md-auto">
-                <button type="button" class="btn btn-dark" onclick="linkToUrl('./editContent/index.html')">การจัดการเนื้อหา</button>
+                <button type="button" class="btn btn-dark" onclick="linkToUrl('./resource/templates/adminManage/HTML/index.html')">การจัดการเนื้อหา</button>
             </div>
         </div>
          <div class="row justify-content-md-center" style="padding-top: 15px;" >
             <div class="col-md-auto">
-                <button type="button" class="btn btn-dark">จัดการผู้ใช้งานระบบ</button>
+                <button type="button" class="btn btn-dark" onclick="linkToUrl('./resource/templates/adminManage/HTML/index.html')">จัดการผู้ใช้งานระบบ</button>
             </div>
         </div>
         <hr>`
