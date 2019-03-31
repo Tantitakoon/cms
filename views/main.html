@@ -1,0 +1,200 @@
+<html>
+
+<head>
+    <!--bootstap-->
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <!--endbootstap-->
+  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./mms/build/potree/potree.css">
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <style>
+        #box {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background-color: white;
+            color: white;
+            display: flex;
+            /* justify-content: center;
+            align-items: center; */
+            /* border-radius: 10px; */
+        }
+
+
+
+        #box2 {
+            position: relative;
+            width: 100%;
+            height: 750px;
+            background-color: white;
+            color: black;
+            display: flex;
+            /* justify-content: center;
+            align-items: center;
+            border-radius: 10px; */
+        }
+
+        #handle {
+            background-color: #727272;
+            cursor: n-resize;
+            position: relative;
+            border: 6px solid #727272;
+            resize: vertical;
+            /* overflow: auto; */
+        }
+
+        #componentSearch {
+            padding-top: 1rem;
+        }
+
+        .contentBar {
+            color: white
+        }
+
+        body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden
+        }
+
+        #topFrame {
+            border-bottom: 2px solid;
+            border-color: darkgray
+        }
+
+        .top {
+            width: 100%;
+            height: 50%;
+            background-color: white;
+        }
+
+        .bottom {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+
+
+
+        #slider {
+            width: 100%;
+            height: 50px;
+            resize: vertical;
+            cursor: row-resize;
+            display: none
+        }
+
+
+   
+        .zoom:hover {
+            transform: scale(1.5);
+        }
+
+        #divided {
+            width: 100%;
+            height: 5px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-primary">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav my-2 my-sm-0">
+                <li class="nav-item"> <a class="nav-link disabled contentBar" href="#">User-Id</a></li>
+                <li class="nav-item"> <input type="button" class="btn btn-link contentBar" value="Logout" id="btLogout"></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+    <div class="row" style="height:100%">
+
+        <div class="col-sm-4 col-md-4" style="border-right: 2px solid; border-color:darkgray">
+
+            <div id='componentSearch' class="row container">
+                <div class="col">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary" id='btSearch'>search</button>
+                </div>
+              
+            </div>
+        </br>
+            <div class="container">
+                   
+                    <table class="table" style="display:none" id='tableSearch'>
+                      <thead>
+                        <tr style="font-size:10px">
+                          <th>#</th>
+                          <th>ชื่อสายทาง</th>
+                          <th>ระยะทาง</th>
+                          <th>วันที่สำรวจ</th>
+                          <th> </th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+        </div>
+
+        <div class="column col-sm-7 col-md-7">
+            <div class="row top" id="topFrame"></div>
+            <div class="row bottom" id="bottomFrame"></div>
+        </div>
+        <div class="column col-sm-1 col-md-1">
+            <div class="row top"></div>
+            <div class="row container"><input class ="zoom" id="slider" type="image" src="./asset/img/arrow1.png"></div>
+            <div class="row bottom"></div>
+        </div>
+    </div>
+
+
+</body>
+<script src="./asset/js/resize.js"></script>
+<script src="./asset/js/handleSearch.js"></script>
+<script>  
+function handleClickSearch(path){
+    $.post("./Potree/setView",{namePath:path},(resp)=>{
+        console.log(resp)
+        let {status} = JSON.parse(resp);
+        if(status){
+            showContent();
+        }    
+    })
+}
+function showContent(){
+        $('#topFrame').html(`<div class="embed-responsive embed-responsive-16by9 ">
+               <iframe class="embed-responsive-item" src="./views/viewPotree.html"></iframe>
+           </div>`)
+       $('#bottomFrame').html(`<div class="embed-responsive embed-responsive-16by9 ">
+               <iframe class="embed-responsive-item" src="https://www.7mscorethai.com/"></iframe>
+           </div>`)
+       $('#slider').show();
+   }
+</script>
+</html>

@@ -26,12 +26,12 @@ $(document).ready(function () {
         </div>
          <div class="row justify-content-md-center"  style="padding-top: 15px;" >
             <div class="col-md-auto">
-                <button type="button" class="btn btn-dark" onclick="linkToUrl('./view/handleBatchSystem.html')">การจัดการระบบ Batch</button>
+                <button type="button" class="btn btn-dark" onclick="linkToUrl('handleBatchSystem')">การจัดการระบบ Batch</button>
             </div>
         </div>
          <div class="row justify-content-md-center" style="padding-top: 15px;" >
             <div class="col-md-auto">
-                <button type="button" class="btn btn-dark"  onclick="linkToUrl('./view/listProcessBatch.html')">รายงานการทำงานระบบ Batch</button>
+                <button type="button" class="btn btn-dark"  onclick="linkToUrl('listProcessBatch')">รายงานการทำงานระบบ Batch</button>
             </div>
         </div>
          <div class="row justify-content-md-center" style="padding-top: 15px;" >
