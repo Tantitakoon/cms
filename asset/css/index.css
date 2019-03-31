@@ -3,9 +3,31 @@ hr {
             border-width: 2px;
           
 }
-body{
+.mainSection{
     text-align: center;
 }
+ /* Simple CSS3 Fade-in Animation */
+ .underlineHover:after {
+    display: block;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background-color: #56baed;
+    content: "";
+    transition: width 0.2s;
+    text-decoration: none;
+  }
+  
+  .underlineHover:hover {
+    color: #0d0d0d;
+    text-decoration: none;
+  }
+  
+  .underlineHover:hover:after{
+    width: 100%;
+  }
+
 
 img {
     display: block;
