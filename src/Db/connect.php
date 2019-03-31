@@ -1,19 +1,21 @@
 <?php
     error_reporting(1);
     
-    
+    include '../../config/config.php';
+    $host = $config['DB_HOST'];
+    $db = $config['DB_USERNAME'];
     $server_ip=$_SERVER[SERVER_ADDR];
     
     if ($server_ip == "127.0.0.1" || $server_ip == "::1"){
-        $host = "localhost";
-        $db = "nextcloudwatertool";
-        $username = "root";
-        $password = "";
+        $host = $config['DB_HOST'];
+        $db = $config['DB_DATABASE'];
+        $username = $config['DB_USERNAME'];
+        $password =  $config['DB_PASSWORD'];
     }else{
-        $host = "localhost";
-        $db = "nextcloudwatertool";
-        $username = "root";
-        $password = "";
+        $host = $config['DB_HOST'];
+        $db = $config['DB_DATABASE'];
+        $username = $config['DB_USERNAME'];
+        $password =  $config['DB_PASSWORD'];
         
     }
     
