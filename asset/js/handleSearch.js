@@ -8,9 +8,9 @@ $(document).ready(function () {
     }
    
 
-   
+   console.log("FUCKK");
     $("#btSearch").click(function () {
-        $.post("./resource/mms/services/search.php",{},(resp)=>{
+        $.post("/mms/services/search.php",{},(resp)=>{
             try{
                 let results = JSON.parse(resp);
                 let values = Object.values(results)
