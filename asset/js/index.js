@@ -1,18 +1,59 @@
 
 $(document).ready(function () {
-    $("#logoff").hide();
+   // $("#logoff").hide();
     
   
-     $("#loginSubmit").click(function () {
-        createLogIn();
-        $("#logoff").show();
-        $("#login").hide();
+    $('#loginSubmit').click(function () {
+        let body = {username:$('#username').val(),password:$('#password').val()};//{ username: "auttapon", password: "tonstory" };
+        if (body.username && body.password) {
+            $.post("./src/User/login.php", body, (resp) => {
+                let decodeJSON = JSON.parse(resp);
+                let { status } = decodeJSON;
+                if (status) {
+                    $.dreamAlert({
+                        'type'      :   'success',
+                        'message'   :   'Login Success',
+                        'position'  :   'right'
+                     });
+                    createLogIn();
+                    $("#logout").show();
+                    $("#login").hide();
+                } else {
+                    $.dreamAlert({
+                        'type'      :   'error',
+                        'message'   :    decodeJSON.errorMessage,
+                        'position'  :   'right'
+                     });
+               
+                }
+            })
+        }
     });
-
-     $("#logoff").click(function () {
-        $("#userLoginAlready").empty();
-        $("#logoff").hide();
-        $("#login").show();
+     $("#logout").click(function () {
+         console.log("TEST");
+        $.post("./src/User/logout.php", {}, (resp) => {
+            let decodeJSON = JSON.parse(resp);
+            let { status } = decodeJSON;
+            if (status) {
+                $.dreamAlert({
+                    'type'      :   'success',
+                    'message'   :    decodeJSON.message,
+                    'position'  :   'right'
+                 });
+                $("#userLoginAlready").empty();
+                $("#logout").hide();
+                $("#login").show();
+            } else {
+                $.dreamAlert({
+                    'type'      :   'error',
+                    'message'   :    decodeJSON.message,
+                    'position'  :   'right'
+                 });
+           
+            }
+        })
+    
+      
      });
 
     

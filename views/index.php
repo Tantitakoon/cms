@@ -1,5 +1,6 @@
-<html>
 
+<html>
+ 
 <head>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -20,18 +21,7 @@
             $(obj).parent().next().slideDown();
         }
 
-        $(document).ready(function () {
-
-            $('#loginSubmit').click(function () {
-                $.dreamAlert({
-                        'type'      :   'success',
-                        'message'   :   'Operation completed!',
-                        'position'  :   'right',
-                        'summary'   :   'this is some text,maybe the user will need.'
-                    });
-            });
-          
-        });
+       
     </script>
 
 
@@ -60,9 +50,43 @@
         </div>
         <hr>
     </div>
+ 
 
-
-    <div class="container" id="userLoginAlready"></div>
+    <div class="container" id="userLoginAlready">
+        <?php
+           
+         
+            if(isset($_SESSION['login'])){
+           echo '<div class="row justify-content-md-center" >
+                <div class="col-md-auto">
+                    <button type="button" class="btn btn-dark">การจัดการ File สำรวจ</button>
+                </div>
+            </div>
+             <div class="row justify-content-md-center"  style="padding-top: 15px;" >
+                <div class="col-md-auto">
+                    <button type="button" class="btn btn-dark" onclick="linkToUrl('.'handleBatchSystem'.')">การจัดการระบบ Batch</button>
+                </div>
+            </div>
+             <div class="row justify-content-md-center" style="padding-top: 15px;" >
+                <div class="col-md-auto">
+                    <button type="button" class="btn btn-dark"  onclick="linkToUrl('.'listProcessBatch'.')">รายงานการทำงานระบบ Batch</button>
+                </div>
+            </div>
+             <div class="row justify-content-md-center" style="padding-top: 15px;" >
+                <div class="col-md-auto">
+                    <button type="button" class="btn btn-dark" onclick="linkToUrl('.'./resource/templates/adminManage/HTML/index.html'.')">การจัดการเนื้อหา</button>
+                </div>
+            </div>
+             <div class="row justify-content-md-center" style="padding-top: 15px;" >
+                <div class="col-md-auto">
+                    <button type="button" class="btn btn-dark" onclick="linkToUrl('.'./resource/templates/adminManage/HTML/index.html'.')">จัดการผู้ใช้งานระบบ</button>
+                </div>
+            </div>
+            <hr>';
+            }
+        ?>
+        
+    </div>
 
 
 
@@ -73,17 +97,23 @@
                 <button type="button" class="btn btn-dark " onclick="linkToUrl('./contact')">ติดต่อเจ้าหน้าที่</button>
             </div>
         </div>
-
-        <div class="row justify-content-md-center" style="padding-top: 15px;">
-            <div class="col-md-auto">
-                <button type="button" id="login" class="btn btn-dark" data-toggle="modal" data-target="#loginModal">Login เข้าสู่ระบบ</button>
-            </div>
-        </div>
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto">
-                <button type="button" id="logoff" class="btn btn-dark">Logoff ออกจากระบบ</button>
-            </div>
-        </div>
+        <?php
+           $state = (isset($_SESSION['login']))?["login"=>"none","logout"=>"show"]:["login"=>"show","logout"=>"none"];
+     
+            echo '<div class="row justify-content-md-center"  style="padding-top: 15px;">
+                <div class="col-md-auto">
+                    <button type="button" id="logout" class="btn btn-dark" style="display:'.$state['logout'].'">Logout ออกจากระบบ</button>
+                </div>
+            </div>';
+           
+            echo '<div class="row justify-content-md-center" >
+                <div class="col-md-auto">
+                    <button type="button" id="login" class="btn btn-dark" data-toggle="modal" data-target="#loginModal" style="display:'.$state['login'].'">Login เข้าสู่ระบบ</button>
+                </div>
+            </div>';
+            
+        ?>
+     
 
     </div>
 

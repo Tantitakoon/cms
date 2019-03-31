@@ -1,8 +1,9 @@
 <?php
+    session_start();
     $request = $_SERVER['REQUEST_URI'];
     switch (explode("/",$request)[2]) {
         case '' :
-            require __DIR__ . './views/index.html';
+            require __DIR__ . './views/index.php';
         break;
         case 'contact' :
             require __DIR__ . './views/contact.html';
