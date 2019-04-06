@@ -26,6 +26,9 @@
         case 'Potree':
             require __DIR__ . './src/Potree/index.php';
         break;
+        case 'resetPassword':
+            require __DIR__ . './views/resetPassword.html';
+        break;
         default:
             require __DIR__ . './views/notFound.html';
         break;

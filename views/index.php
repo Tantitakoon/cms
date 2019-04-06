@@ -147,7 +147,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a class="underlineHover" href="#">forgot password</a>
+                    <a class="underlineHover" href="resetPassword">forgot password</a>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" id="loginSubmit" data-dismiss="modal" class="btn btn-primary">Login</button>
                 </div>
