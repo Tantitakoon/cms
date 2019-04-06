@@ -4,6 +4,7 @@ $(document).ready(function () {
     
   
     $('#loginSubmit').click(function () {
+      
         let body = {username:$('#username').val(),password:$('#password').val()};//{ username: "auttapon", password: "tonstory" };
         if (body.username && body.password) {
             $.post("./src/User/login.php", body, (resp) => {

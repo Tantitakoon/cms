@@ -122,37 +122,35 @@
 
     <!-- Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <label for="validationCustom01">Username or Email</label>
-                    <div class="form-row">
-                        <div class="form-group col">
-                            <input type="text" class="form-control" id="username" placeholder="">
-                        </div>
-                    </div>
-                    <label for="validationCustom01">Password</label>
-                    <div class="form-row">
-                        <div class="form-group col">
-                            <input type="password" class="form-control" id="password" placeholder="">
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <a class="underlineHover" href="#">forgot password</a>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" id="loginSubmit" data-dismiss="modal" class="btn btn-primary">Login</button>
-                </div>
-            </div>
-        </div>
+    <div class="modal-dialog modal-login">
+		<div class="modal-content">
+			<div class="modal-header">				
+				<h4 class="modal-title"> <img src="./asset/img/index.jpg" class="img-fluid" alt="Responsive image"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+							<input type="text" class="form-control" name="password" placeholder="Password" required="required">
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" id="loginSubmit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+					</div>
+					<p class="hint-text"><a href="#">Forgot Password?</a></p>
+				</form>
+			</div>
+			<div class="modal-footer">สถาบันสารสนเทศ ทรัพยากรน้ำเเละเกษตร</div>
+		</div>
+	</div>
     </div>
 
 
