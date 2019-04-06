@@ -1,63 +1,122 @@
 
 $(document).ready(function () {
-   // $("#logoff").hide();
-    
-  
+    // $("#logoff").hide();
+
+
     $('#loginSubmit').click(function () {
-      
-        let body = {username:$('#username').val(),password:$('#password').val()};//{ username: "auttapon", password: "tonstory" };
+
+        let body = { username: $('#username').val(), password: $('#password').val() };//{ username: "auttapon", password: "tonstory" };
         if (body.username && body.password) {
             $.post("./src/User/login.php", body, (resp) => {
                 let decodeJSON = JSON.parse(resp);
                 let { status } = decodeJSON;
                 if (status) {
                     $.dreamAlert({
-                        'type'      :   'success',
-                        'message'   :   'Login Success',
-                        'position'  :   'right'
-                     });
+                        'type': 'success',
+                        'message': 'Login Success',
+                        'position': 'right'
+                    });
                     createLogIn();
                     $("#logout").show();
                     $("#login").hide();
                 } else {
                     $.dreamAlert({
-                        'type'      :   'error',
-                        'message'   :    decodeJSON.errorMessage,
-                        'position'  :   'right'
-                     });
-               
+                        'type': 'error',
+                        'message': decodeJSON.errorMessage,
+                        'position': 'right'
+                    });
+
                 }
             })
         }
     });
-     $("#logout").click(function () {
-         console.log("TEST");
+    $("#logout").click(function () {
+        console.log("TEST");
         $.post("./src/User/logout.php", {}, (resp) => {
             let decodeJSON = JSON.parse(resp);
             let { status } = decodeJSON;
             if (status) {
                 $.dreamAlert({
-                    'type'      :   'success',
-                    'message'   :    decodeJSON.message,
-                    'position'  :   'right'
-                 });
+                    'type': 'success',
+                    'message': decodeJSON.message,
+                    'position': 'right'
+                });
                 $("#userLoginAlready").empty();
                 $("#logout").hide();
                 $("#login").show();
             } else {
                 $.dreamAlert({
-                    'type'      :   'error',
-                    'message'   :    decodeJSON.message,
-                    'position'  :   'right'
-                 });
-           
+                    'type': 'error',
+                    'message': decodeJSON.message,
+                    'position': 'right'
+                });
+
             }
         })
-    
-      
-     });
 
-    
+
+    });
+
+    // forgetPassword : when user click link forgetpassword
+    $("#forgetPassword").click(function () {
+        $("#informationUserLogin").empty();
+        $("#forgetPassword").hide();
+        $("#backTOLogin").show();
+        $("#informationUserLogin").append(`
+                                         <div class="form-group">
+                                             <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                <input type="text" class="form-control" name="username" placeholder="E-mail" required="required">
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+						                    <button type="submit" id="OTPLinkResetPass" class="btn btn-primary btn-block btn-lg">ยืนยันการขอเปลี่ยนรหัส</button>
+					                      </div>
+                                          
+                                          `
+        );
+
+    });
+
+
+    $("#login").click(function () {
+        $.fn.createFormLogin()
+    });
+
+
+    $("#backTOLogin").click(function () {
+        $.fn.createFormLogin()
+    });
+
+
+
+    //createFormLogin
+    $.fn.createFormLogin = function () {
+        $("#informationUserLogin").empty();
+        $("#forgetPassword").show();
+        $("#backTOLogin").hide();
+        $("#informationUserLogin").append(`<div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                    <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                    <input type="text" class="form-control" name="password" placeholder="Password" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" id="loginSubmit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+                                            </div>
+                                                 
+                                          `
+        );
+    }
+
+
+
 
     function createLogIn() {
         var bodyLogin = document.createElement("div");
@@ -90,11 +149,11 @@ $(document).ready(function () {
         $("#userLoginAlready").append(bodyLogin);
     }
 
-  
+
 
 
 });
 
-function linkToUrl(url){
+function linkToUrl(url) {
     location.href = url;
- }
+}

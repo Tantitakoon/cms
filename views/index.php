@@ -124,28 +124,15 @@
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-login">
 		<div class="modal-content">
-			<div class="modal-header">				
+			<div class="modal-header">			
+                <button type="button" id="backTOLogin" class="back" >&larr;</button>	
 				<h4 class="modal-title"> <img src="./asset/img/index.jpg" class="img-fluid" alt="Responsive image"></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<form>
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="text" class="form-control" name="username" placeholder="Username" required="required">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-							<input type="text" class="form-control" name="password" placeholder="Password" required="required">
-						</div>
-					</div>
-					<div class="form-group">
-						<button type="submit" id="loginSubmit" class="btn btn-primary btn-block btn-lg">Sign In</button>
-					</div>
-					<p class="hint-text"><a href="#">Forgot Password?</a></p>
+				<form> 
+                    <div id="informationUserLogin"></div>   
+                <p class="hint-text"><a href="#" id ="forgetPassword">Forgot Password?</a></p> 
 				</form>
 			</div>
 			<div class="modal-footer">สถาบันสารสนเทศ ทรัพยากรน้ำเเละเกษตร</div>
