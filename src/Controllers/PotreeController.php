@@ -1,14 +1,15 @@
 <?php
 namespace App\Controllers;
-    class Potree extends Controller{
+    use App\Api\Potree;
+    class PotreeController extends Controller{
         public static function setView(){
-            require "src/Api/Potree/setview.php";  
+            Potree::setView();
         }
         public static function getView(){
-            require "src/Api/Potree/getview.php";  
+            Potree::getView();
         }
         public static function search(){
-            require "src/Api/Potree/search.php";  
+            Potree::search();
         }
     }
 ?>

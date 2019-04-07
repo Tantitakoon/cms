@@ -1,23 +1,23 @@
 <?php 
     namespace App\Route;
-    require 'vendor/autoload.php';
     use App\Classes\Route;
-    use App\Controllers\Index;
-    use App\Controllers\Potree;
-    use App\Controllers\User;
+    use App\Controllers\IndexController;
+    use App\Controllers\PotreeController;
+    use App\Controllers\UserController;
     use App\Controllers\Controller;
     class Routes {
      
         function routerView(){
+            
             Route::set('/cms/',function(){
-                Index::CreateView("index.php");
-                Index::isLogin();
+                IndexController::CreateView("index.php");
+                IndexController::isLogin();
             });
             Route::set('/cms/map',function(){
-                Potree::CheckLogin("main.html");
+                PotreeController::CheckLogin("main.html");
             });
             Route::set('/cms/viewPotree',function(){
-                Potree::CheckLogin("viewPotree.html");
+                PotreeController::CheckLogin("viewPotree.html");
             });
             Route::set('/cms/downLoadWork',function(){
                 Controller::CreateView("downLoadWork.html");
@@ -35,7 +35,7 @@
                 require 'resource/templates/adminManage/HTML/index.html';
             });
             Route::set('/cms/resetPassword',function(){
-                Controller::CheckLogin("resetPassword.html");
+                UserController::checkResetPassword();  
             });
 
             
@@ -43,19 +43,25 @@
 
         function routerApi(){
             Route::set('/cms/Potree/setView',function(){
-                Potree::setView();
+                PotreeController::setView();
             });
             Route::set('/cms/Potree/getView',function(){
-                Potree::getView();
+                PotreeController::getView();
             });
             Route::set('/cms/Potree/search',function(){
-                Potree::search();
+                PotreeController::search();
             });
             Route::set('/cms/User/login',function(){
-                User::login();
+                UserController::login();
             });
             Route::set('/cms/User/logout',function(){
-                User::logout();
+                UserController::logout();
+            });
+            Route::set('/cms/User/resetPassword',function(){
+                UserController::resetPassword();
+            });
+            Route::set('/cms/User/updatePassword',function(){
+                UserController::updatePassword();
             });
             if(Route::isNotFound()) Controller::CreateView("notFound.html");
         }

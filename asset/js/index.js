@@ -1,41 +1,8 @@
 
-$(document).ready(function () {
-   // $("#logoff").hide();
-
-  
-    // $('#loginSubmit').click(function () {
-     
-    //     let body = {username:$('#username').val(),password:$('#password').val()};//{ username: "auttapon", password: "tonstory" };
-    //     console.log(body);
-    //     if (body.username && body.password) {
-    //         $.post("./User/login", body, (resp) => {
-    //             let decodeJSON = JSON.parse(resp);
-    //             let { status } = decodeJSON;
-    //             console.log(decodeJSON)
-    //             if (status) {
-    //                 $.dreamAlert({
-    //                     'type'      :   'success',
-    //                     'message'   :   'Login Success',
-    //                     'position'  :   'right'
-    //                  });
-    //                 createLogIn();
-    //                 $("#logout").show();
-    //                 $("#login").hide();
-    //             } else {
-    //                 $.dreamAlert({
-    //                     'type'      :   'error',
-    //                     'message'   :    decodeJSON.errorMessage,
-    //                     'position'  :   'right'
-    //                  });
-               
-    //             }
-    //         })
-    //     }
-    // });
-
-   
+$(document).ready(function () { 
      $("#logout").click(function () {
         $.post("./User/logout", {}, (resp) => {
+
             let decodeJSON = JSON.parse(resp);
             let { status } = decodeJSON;
             if (status) {
@@ -70,11 +37,11 @@ $(document).ready(function () {
                                      <div class="form-group">
                                          <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input type="text" class="form-control" name="username" placeholder="E-mail" required="required">
+                                            <input type="text" class="form-control" id="emailUser" placeholder="E-mail" required="required">
                                         </div>
                                       </div>
                                       <div class="form-group">
-                                        <button type="submit" id="OTPLinkResetPass" class="btn btn-primary btn-block btn-lg"  >ยืนยันการขอเปลี่ยนรหัส</button>
+                                        <button type="submit" id="OTPLinkResetPass" class="btn btn-primary btn-block btn-lg"  onclick = "handleResetPassword()"  >ยืนยันการขอเปลี่ยนรหัส</button>
                                       </div>
                                       
                                       `
@@ -92,79 +59,73 @@ $("#backTOLogin").click(function () {
     $.fn.createFormLogin()
 });
 
+$.fn.loginSubmit = function () {
+        let body = { username: $('#username').val(), password: $('#password').val() };//{ username: "auttapon", password: "tonstory" };
+        console.log(body);
+        if (body.username && body.password) {
+            $.post("./User/login", body, (resp) => {
+                console.log(resp)
+                let decodeJSON = JSON.parse(resp);
+                let { status } = decodeJSON;
+                if (status) {
+                    $.dreamAlert({
+                        'type': 'success',
+                        'message': 'Login Success',
+                        'position': 'right'
+                    });
+                    $('#loginModal').modal('toggle');
+                    createLogIn();
+                    $("#logout").show();
+                    $("#login").hide();
+                } else {
+                    $.dreamAlert({
+                        'type': 'error',
+                        'message': decodeJSON.errorMessage,
+                        'position': 'right'
+                    });
+
+                }
+            })
+        }
+    }
 
  
-//createFormLogin
-$.fn.createFormLogin = function () {
+});
+
+  //createFormLogin
+  $.fn.createFormLogin = function () {
     $("#informationUserLogin").empty();
     $("#forgetPassword").show();
     $("#backTOLogin").hide();
     $("#informationUserLogin").append(`<div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                <input type="text" class="form-control" id="username" placeholder="Username" required="required">
+                                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="required">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                                <input type="password" class="form-control" id="password" placeholder="Password" required="required">
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="required">
                                             </div>
                                         </div>
-                                        <button type="button" id="loginSubmit" class="btn btn-primary btn-block btn-lg" onclick = "handleLogin()" >Sign In</button>
-                                       
+                                        <div class="form-group">
+                                            <button type="submit" id="loginSubmit" onclick=" $.fn.loginSubmit()" class="btn btn-primary btn-block btn-lg">Sign In</button>
+                                        </div>
                                              
-                                     `
-   );
+                                      `
+    );
+
+
+
 }
 
-    
-
-
-
-    
-
-
-});
 
 function linkToUrl(url){
  
     location.href = url;
  }
  
-
-function handleLogin(){
-   
-    let body = {username:$('#username').val(),password:$('#password').val()};//{ username: "auttapon", password: "tonstory" };
-        console.log(body);
-        if (body.username && body.password) {
-            console.log("TTT")
-            $.post("./User/login", body, (resp) => {
-                let decodeJSON = JSON.parse(resp);
-                let { status } = decodeJSON;
-                console.log(decodeJSON)
-                if (status) {
-                    $.dreamAlert({
-                        'type'      :   'success',
-                        'message'   :   'Login Success',
-                        'position'  :   'right'
-                     });
-                    createLogIn();
-                    $("#logout").show();
-                    $("#login").hide();
-                    $('#loginModal').modal('hide');
-                } else {
-                    $.dreamAlert({
-                        'type'      :   'error',
-                        'message'   :    decodeJSON.errorMessage,
-                        'position'  :   'right'
-                     });
-               
-                }
-            })
-        }
-}
-
 function createLogIn() {
     var bodyLogin = document.createElement("div");
     bodyLogin.innerHTML = `<div class="row justify-content-md-center" >
@@ -195,3 +156,36 @@ function createLogIn() {
     <hr>`
     $("#userLoginAlready").append(bodyLogin);
 }
+
+
+function handleResetPassword(){
+    let emailUser =  $('#emailUser').val()
+    if(emailUser){
+        $.post("./User/resetPassword",{email:emailUser},(resp)=>{
+            let decodeJSON = JSON.parse(resp);
+            let {status} = decodeJSON;
+            if(status){
+                $.dreamAlert({
+                    'type': 'success',
+                    'message': 'Send Email Success',
+                    'position': 'right'
+                });
+                $('#loginModal').modal('toggle');
+            }else{
+                $.dreamAlert({
+                    'type': 'error',
+                    'message': 'Error',
+                    'position': 'right'
+                });
+            }
+        })
+    }else{
+        $.dreamAlert({
+            'type': 'error',
+            'message': 'Fill Email !!',
+            'position': 'right'
+        });
+    }
+}
+
+

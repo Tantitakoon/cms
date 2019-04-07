@@ -112,43 +112,7 @@
                 </div>
             </div>
             
-            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            
-                <div class="modal-dialog modal-login">
-                    <div class="modal-content">
-                        <div class="modal-header">			
-                            <button type="button" id="backTOLogin" class="back" >&larr;</button>	
-                            <h4 class="modal-title"> <img src="./asset/img/index.jpg" class="img-fluid" alt="Responsive image"></h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <form> 
-                               <div id="informationUserLogin">
-                               <div class="form-group">
-                               <div class="input-group">
-                                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                   <input type="text" class="form-control" id="username" placeholder="Username" required="required">
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <div class="input-group">
-                                   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                   <input type="text" class="form-control" id="password" placeholder="Password" required="required">
-                               </div>
-                           </div>
-                           <button type="button" id="loginSubmit" class="btn btn-primary btn-block btn-lg" onclick = "handleLogin()" >Sign In</button>
-                        
-                               
-                               
-                               </div>
-                            <p class="hint-text"><a href="#" id ="forgetPassword">Forgot Password?</a></p> 
-                            </form>
-                        </div>
-                        <div class="modal-footer">สถาบันสารสนเทศ ทรัพยากรน้ำเเละเกษตร</div>
-                    </div>
-                </div>
              
-                </div>
             ';
             
         ?>
@@ -159,11 +123,51 @@
 </div>
 
 
-    <!-- Modal -->
+    <!-- Modal --> 
    
+ 
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-login">
+		<div class="modal-content">
+			<div class="modal-header">			
+                <button type="button" id="backTOLogin" class="back" >&larr;</button>	
+				<h4 class="modal-title"> <img src="./asset/img/index.jpg" class="img-fluid" alt="Responsive image"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+
+                    <div id="informationUserLogin">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="required">
+                        </div>
+                    </div>
+                        <div class="form-group">
+                           <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="required">
+                            </div>
+                        </div>
+                    <div class="form-group">
+                         <button type="submit" id="loginSubmit" onclick=" $.fn.loginSubmit()" class="btn btn-primary btn-block btn-lg">Sign In</button>
+                    </div>        
+                
+                
+                </div>   
+                <p class="hint-text"><a href="#" id ="forgetPassword">Forgot Password?</a></p> 
+				
+			</div>
+			<div class="modal-footer">สถาบันสารสนเทศ ทรัพยากรน้ำเเละเกษตร</div>
+		</div>
+	</div>
+    </div>
+ 
 
 
 </body>
  
     <script src="./asset/js/index.js"></script>
+
+ 
 </html>
