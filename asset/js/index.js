@@ -1,12 +1,13 @@
 
 $(document).ready(function () {
    // $("#logoff").hide();
-    
+
   
     $('#loginSubmit').click(function () {
         let body = {username:$('#username').val(),password:$('#password').val()};//{ username: "auttapon", password: "tonstory" };
+        console.log(body);
         if (body.username && body.password) {
-            $.post("./src/User/login.php", body, (resp) => {
+            $.post("./User/login", body, (resp) => {
                 let decodeJSON = JSON.parse(resp);
                 let { status } = decodeJSON;
                 if (status) {
@@ -30,8 +31,7 @@ $(document).ready(function () {
         }
     });
      $("#logout").click(function () {
-         console.log("TEST");
-        $.post("./src/User/logout.php", {}, (resp) => {
+        $.post("./User/logout", {}, (resp) => {
             let decodeJSON = JSON.parse(resp);
             let { status } = decodeJSON;
             if (status) {

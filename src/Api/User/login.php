@@ -1,9 +1,9 @@
 <?php
-session_start();
+ 
 if( isset($_POST['username']) && isset($_POST['password'])){
   //  header('Content-type:application/json');
    // header('Content-type:application/x-www-form-urlencoded');
-    require_once "../Db/connect.php";
+    require_once "src/Db/connect.php";
     // if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
     //     throw new Exception('Request method must be POST!');
     // }

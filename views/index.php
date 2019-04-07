@@ -40,7 +40,7 @@
         </div>
         <div class="row justify-content-md-center" style="padding-top: 25px;">
             <div class="col-md-auto">
-                <button type="button" class="btn btn-dark">แผนที่ OrbitGT</button>
+                <button type="button" class="btn btn-dark" onclick="linkToUrl('./map')">แผนที่ OrbitGT</button>
             </div>
         </div>
         <div class="row justify-content-md-center" style="padding-top: 15px;">
@@ -146,7 +146,7 @@
                     </div>
 
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer"  >
                     <a class="underlineHover" href="resetPassword">forgot password</a>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" id="loginSubmit" data-dismiss="modal" class="btn btn-primary">Login</button>

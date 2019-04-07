@@ -1,9 +1,9 @@
 <?php
     error_reporting(1);
     
-    include '../../config/config.php';
-    $host = $config['DB_HOST'];
-    $db = $config['DB_USERNAME'];
+    include_once('config/config.php');
+    // $host = $config['DB_HOST'];
+    // $db = $config['DB_USERNAME'];
     $server_ip=$_SERVER[SERVER_ADDR];
     
     if ($server_ip == "127.0.0.1" || $server_ip == "::1"){
@@ -19,7 +19,7 @@
         
     }
     
-    
+ 
     $connect = mysqli_connect($host,$username,$password,$db) ;
     
     

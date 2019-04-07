@@ -112,8 +112,9 @@
 			
 			
 		}
-        $.post("../Potree/getView",{},(resp)=>{
+        $.post("./Potree/getView",{},(resp)=>{
 			let {status,viewPath} =  JSON.parse(resp);
+			console.log(status)
             if(status) loadPotree(`${viewPath}`)
         })
 		 

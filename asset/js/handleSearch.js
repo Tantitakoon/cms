@@ -8,11 +8,11 @@ $(document).ready(function () {
     }
    
 
-   console.log("FUCKK");
     $("#btSearch").click(function () {
-        $.post("/mms/services/search.php",{},(resp)=>{
+        $.post("./Potree/search",{},(resp)=>{
             try{
                 let results = JSON.parse(resp);
+                console.log(results);
                 let values = Object.values(results)
                 let count =0;
                 if(values.length > 0){
