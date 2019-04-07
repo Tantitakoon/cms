@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./asset/css/index.css">
-    <script src="./asset/js/index.js"></script>
+
 
     <script src="./asset/alert/jquery.dreamalert.js" type="text/javascript"></script>
     <link href="./asset/alert/jquery.dreamalert.css" media="screen" rel="stylesheet" type="text/css" />
@@ -64,26 +64,26 @@
             </div>
              <div class="row justify-content-md-center"  style="padding-top: 15px;" >
                 <div class="col-md-auto">
-                    <button type="button" class="btn btn-dark" onclick="linkToUrl('.'handleBatchSystem'.')">การจัดการระบบ Batch</button>
+                    <button type="button" class="btn btn-dark" onclick="linkToUrl('."'handleBatchSystem'".')">การจัดการระบบ Batch</button>
                 </div>
             </div>
              <div class="row justify-content-md-center" style="padding-top: 15px;" >
                 <div class="col-md-auto">
-                    <button type="button" class="btn btn-dark"  onclick="linkToUrl('.'listProcessBatch'.')">รายงานการทำงานระบบ Batch</button>
+                    <button type="button" class="btn btn-dark"  onclick="linkToUrl('."'listProcessBatch'".')">รายงานการทำงานระบบ Batch</button>
                 </div>
             </div>
              <div class="row justify-content-md-center" style="padding-top: 15px;" >
                 <div class="col-md-auto">
-                    <button type="button" class="btn btn-dark" onclick="linkToUrl('.'./resource/templates/adminManage/HTML/index.html'.')">การจัดการเนื้อหา</button>
+                    <button type="button" class="btn btn-dark" onclick="linkToUrl('."'./resource/templates/adminManage/HTML/index.html'".')">การจัดการเนื้อหา</button>
                 </div>
             </div>
              <div class="row justify-content-md-center" style="padding-top: 15px;" >
                 <div class="col-md-auto">
-                    <button type="button" class="btn btn-dark" onclick="linkToUrl('.'./resource/templates/adminManage/HTML/index.html'.')">จัดการผู้ใช้งานระบบ</button>
+                    <button type="button" class="btn btn-dark" onclick="linkToUrl('."'./resource/templates/adminManage/HTML/index.html'".')">จัดการผู้ใช้งานระบบ</button>
                 </div>
             </div>
             <hr>';
-            }
+            }  
         ?>
         
     </div>
@@ -110,7 +110,46 @@
                 <div class="col-md-auto">
                     <button type="button" id="login" class="btn btn-dark" data-toggle="modal" data-target="#loginModal" style="display:'.$state['login'].'">Login เข้าสู่ระบบ</button>
                 </div>
-            </div>';
+            </div>
+            
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            
+                <div class="modal-dialog modal-login">
+                    <div class="modal-content">
+                        <div class="modal-header">			
+                            <button type="button" id="backTOLogin" class="back" >&larr;</button>	
+                            <h4 class="modal-title"> <img src="./asset/img/index.jpg" class="img-fluid" alt="Responsive image"></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form> 
+                               <div id="informationUserLogin">
+                               <div class="form-group">
+                               <div class="input-group">
+                                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                   <input type="text" class="form-control" id="username" placeholder="Username" required="required">
+                               </div>
+                           </div>
+                           <div class="form-group">
+                               <div class="input-group">
+                                   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                   <input type="text" class="form-control" id="password" placeholder="Password" required="required">
+                               </div>
+                           </div>
+                           <button type="button" id="loginSubmit" class="btn btn-primary btn-block btn-lg" onclick = "handleLogin()" >Sign In</button>
+                        
+                               
+                               
+                               </div>
+                            <p class="hint-text"><a href="#" id ="forgetPassword">Forgot Password?</a></p> 
+                            </form>
+                        </div>
+                        <div class="modal-footer">สถาบันสารสนเทศ ทรัพยากรน้ำเเละเกษตร</div>
+                    </div>
+                </div>
+             
+                </div>
+            ';
             
         ?>
      
@@ -121,41 +160,10 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <label for="validationCustom01">Username or Email</label>
-                    <div class="form-row">
-                        <div class="form-group col">
-                            <input type="text" class="form-control" id="username" placeholder="">
-                        </div>
-                    </div>
-                    <label for="validationCustom01">Password</label>
-                    <div class="form-row">
-                        <div class="form-group col">
-                            <input type="password" class="form-control" id="password" placeholder="">
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer"  >
-                    <a class="underlineHover" href="resetPassword">forgot password</a>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" id="loginSubmit" data-dismiss="modal" class="btn btn-primary">Login</button>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
 
 </body>
-
+ 
+    <script src="./asset/js/index.js"></script>
 </html>
