@@ -1,35 +1,8 @@
 
 $(document).ready(function () {
     // $("#logoff").hide();
+ 
 
-
-    $('#loginSubmit').click(function () {
-
-        let body = { username: $('#username').val(), password: $('#password').val() };//{ username: "auttapon", password: "tonstory" };
-        if (body.username && body.password) {
-            $.post("./src/User/login.php", body, (resp) => {
-                let decodeJSON = JSON.parse(resp);
-                let { status } = decodeJSON;
-                if (status) {
-                    $.dreamAlert({
-                        'type': 'success',
-                        'message': 'Login Success',
-                        'position': 'right'
-                    });
-                    createLogIn();
-                    $("#logout").show();
-                    $("#login").hide();
-                } else {
-                    $.dreamAlert({
-                        'type': 'error',
-                        'message': decodeJSON.errorMessage,
-                        'position': 'right'
-                    });
-
-                }
-            })
-        }
-    });
     $("#logout").click(function () {
         console.log("TEST");
         $.post("./src/User/logout.php", {}, (resp) => {
@@ -88,7 +61,36 @@ $(document).ready(function () {
         $.fn.createFormLogin()
     });
 
+    $.fn.loginSubmit = function () {
+      
+           
+        
+        let body = { username: $('#username').val(), password: $('#password').val() };//{ username: "auttapon", password: "tonstory" };
+        if (body.username && body.password) {
+            $.post("./src/User/login.php", body, (resp) => {
+                let decodeJSON = JSON.parse(resp);
+                let { status } = decodeJSON;
+                if (status) {
+                    $.dreamAlert({
+                        'type': 'success',
+                        'message': 'Login Success',
+                        'position': 'right'
+                    });
+                    $('#loginModal').modal('toggle');
+                    createLogIn();
+                    $("#logout").show();
+                    $("#login").hide();
+                } else {
+                    $.dreamAlert({
+                        'type': 'error',
+                        'message': decodeJSON.errorMessage,
+                        'position': 'right'
+                    });
 
+                }
+            })
+        }
+    }
 
     //createFormLogin
     $.fn.createFormLogin = function () {
@@ -98,21 +100,24 @@ $(document).ready(function () {
         $("#informationUserLogin").append(`<div class="form-group">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                    <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+                                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="required">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                                    <input type="text" class="form-control" name="password" placeholder="Password" required="required">
+                                                    <input type="text" class="form-control" id="password" name="password" placeholder="Password" required="required">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" id="loginSubmit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+                                                <button type="submit" id="loginSubmit" onclick=" $.fn.loginSubmit()" class="btn btn-primary btn-block btn-lg">Sign In</button>
                                             </div>
                                                  
                                           `
         );
+
+
+
     }
 
 

@@ -130,10 +130,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<form> 
+
                     <div id="informationUserLogin"></div>   
                 <p class="hint-text"><a href="#" id ="forgetPassword">Forgot Password?</a></p> 
-				</form>
+				
 			</div>
 			<div class="modal-footer">สถาบันสารสนเทศ ทรัพยากรน้ำเเละเกษตร</div>
 		</div>
