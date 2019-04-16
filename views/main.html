@@ -180,7 +180,7 @@
 <script>  
 function handleClickSearch(path){
     $.post("./Potree/setView",{namePath:path},(resp)=>{
-        console.log(resp)
+       // console.log(resp)
         let {status} = JSON.parse(resp);
         if(status){
             showContent();

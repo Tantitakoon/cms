@@ -12,7 +12,7 @@ $(document).ready(function () {
         $.post("./Potree/search",{},(resp)=>{
             try{
                 let results = JSON.parse(resp);
-                console.log(results);
+               // console.log(results);
                 let values = Object.values(results)
                 let count =0;
                 if(values.length > 0){

@@ -61,10 +61,9 @@ $("#backTOLogin").click(function () {
 
 $.fn.loginSubmit = function () {
         let body = { username: $('#username').val(), password: $('#password').val() };//{ username: "auttapon", password: "tonstory" };
-        console.log(body);
+      //  console.log(body);
         if (body.username && body.password) {
             $.post("./User/login", body, (resp) => {
-                console.log(resp)
                 let decodeJSON = JSON.parse(resp);
                 let { status } = decodeJSON;
                 if (status) {
@@ -162,6 +161,7 @@ function handleResetPassword(){
     let emailUser =  $('#emailUser').val()
     if(emailUser){
         $.post("./User/resetPassword",{email:emailUser},(resp)=>{
+         //   console.log(resp)
             let decodeJSON = JSON.parse(resp);
             let {status} = decodeJSON;
             if(status){

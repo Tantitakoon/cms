@@ -15,11 +15,9 @@
         $host = $configs['DB_HOST'];
         $db = $configs['DB_DATABASE'];
         $username = $configs['DB_USERNAME'];
-        $password =  $configs
-        /['DB_PASSWORD'];
+        $password =  $configs['DB_PASSWORD'];
         
     }
-    
  
     $connect = mysqli_connect($host,$username,$password,$db) ;
     
