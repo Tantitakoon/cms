@@ -11,10 +11,12 @@ class Potree {
     }
 
     public function setView(){
-        if(isset($_SESSION['viewPath']))
-            echo json_encode((object) array('viewPath' => $_SESSION['viewPath'],'status'=>true));
-        else 
+        if(isset($_POST['namePath'])){
+            $_SESSION['viewPath'] = $_POST['namePath'];
+            echo json_encode((object) array('status'=>true));
+        } else{
             echo json_encode((object) array('status'=>false));
+        }    
     }
 
     public function search(){
