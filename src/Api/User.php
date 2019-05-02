@@ -86,16 +86,19 @@ class User {
     function sendEmail($data){
 
 
-            $mail = new PHPMailer(true);
-            $timestamp = time();
-            $info_email = json_encode([
-                            "email"=>$data['user_email'],
-                            "dataEncrypt"=>Aes256::getDataEncrypt(),
-                            "timestamp"=> $timestamp
-                          ]);
-            $encode_email = urlencode(Aes256::encode($info_email));
             try {
-
+                
+                $mail = new PHPMailer(true);
+                $configs = include("config/config.php");
+                $hostname = $configs['HOSTNAME'];
+                $timestamp = time();
+                $info_email = json_encode([
+                                "email"=>$data['user_email'],
+                                "dataEncrypt"=>Aes256::getDataEncrypt(),
+                                "timestamp"=> $timestamp
+                            ]);
+                
+                $encode_email = urlencode(Aes256::encode($info_email));
                 $mail->SMTPDebug = 2;
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';
@@ -114,7 +117,7 @@ class User {
 
                 $mail->isHTML(true);
                 $mail->Subject = 'Reset password';
-                $mail->Body    = "<b>Reset your password </b> <a href='http://localhost/cms/resetPassword?info=$encode_email'>Click !!!</a>";
+                $mail->Body    = "<b>Reset your password </b> <a href='$hostname/cms/resetPassword?info=$encode_email'>Click !!!</a>";
 
                 if($mail->send()){
                     echo json_encode(['status'=>true]);
