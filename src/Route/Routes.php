@@ -1,14 +1,15 @@
 <?php 
     namespace App\Route;
     use App\Classes\Route;
+    use App\Classes\Http;
     use App\Controllers\IndexController;
     use App\Controllers\PotreeController;
     use App\Controllers\UserController;
     use App\Controllers\Controller;
     class Routes {
      
-        function routerView(){
-            
+        function routerView(){  
+            if(!Http::isGet()) return; 
             Route::set('/cms/',function(){
                 IndexController::CreateView("index.php");
                 IndexController::isLogin();
@@ -17,7 +18,7 @@
                 PotreeController::CheckLogin("main.html");
             });
             Route::set('/cms/viewPotree',function(){
-                PotreeController::CheckLogin("viewPotree.html");
+                PotreeController::renderProtree();
             });
             Route::set('/cms/downLoadWork',function(){
                 Controller::CreateView("downLoadWork.html");
@@ -42,14 +43,19 @@
         }
 
         function routerApi(){
+            if(Http::isGet()){
+                self::getApi();
+            }else if(Http::isPost()){
+                self::postApi();
+            }
+            if(Route::isNotFound()){
+                Http::notFoundRequest();
+            } //Controller::CreateView("notFound.html");
+        }
+
+        function postApi(){
             Route::set('/cms/Potree/setView',function(){
                 PotreeController::setView();
-            });
-            Route::set('/cms/Potree/getView',function(){
-                PotreeController::getView();
-            });
-            Route::set('/cms/Potree/search',function(){
-                PotreeController::search();
             });
             Route::set('/cms/User/login',function(){
                 UserController::login();
@@ -63,7 +69,19 @@
             Route::set('/cms/User/updatePassword',function(){
                 UserController::updatePassword();
             });
-            if(Route::isNotFound()) Controller::CreateView("notFound.html");
+        }
+
+        function getApi(){
+            Route::set('/cms/Potree/getView',function(){
+                PotreeController::getView();
+            });
+            Route::set('/cms/Potree/search',function(){
+                PotreeController::search();
+            });
+            Route::set('/cms/User/getUserByRole',function(){
+                UserController::getUserByRole();
+            });
+      
         }
 
    

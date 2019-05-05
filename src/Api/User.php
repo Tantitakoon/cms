@@ -76,11 +76,7 @@ class User {
     }
 
 
-    function badRequest(){
-        echo json_encode(["errorMessage" => "Bad request","status"=>false]);
-        http_response_code(400);
-    }
-
+ 
 
 
     function sendEmail($data){
@@ -141,13 +137,30 @@ class User {
         if (mysqli_query($connect, $sql)) {
             $result = ["status"=>true,"message"=>"User Email : $user_email  =>  Update Success"];
         } else {
-            $result =  ["status"=>false,"errorMessage"=>"Error updating record: " . mysqli_error($conn),"sql"=> $sql];
+            $result =  ["status"=>false,"errorMessage"=>"Error updating record: " . mysqli_error($connect),"sql"=> $sql];
         }
         mysqli_close($connect);
         return  $result;
     }
 
-
+    function getUserByRole($role){
+        require_once "src/Db/connect.php";
+        $sql = "SELECT * FROM cms_users WHERE user_role = '$role';";
+        $results = array("data"=>[],"count"=>0);
+        $result = mysqli_query($connect, $sql);   
+        if(!mysqli_error($connect)) {
+            if (mysqli_num_rows($result) > 0) {
+                while($row  = mysqli_fetch_assoc($result)){
+                    array_push($results['data'] ,$row);
+                    $results['count']++;
+                }
+            }
+        }else{
+            $results  = ["status"=>false,"errorMessage"=>"Error query : " . mysqli_error($connect)];
+        }
+        mysqli_close($connect);
+        return $results;
+    }
 
 }
 

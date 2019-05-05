@@ -179,17 +179,18 @@
 <script src="./asset/js/handleSearch.js"></script>
 <script>  
 function handleClickSearch(path){
-    $.post("./Potree/setView",{namePath:path},(resp)=>{
+    //$.post("./Potree/setView",{namePath:path},(resp)=>{
        // console.log(resp)
-        let {status} = JSON.parse(resp);
-        if(status){
-            showContent();
-        }    
-    })
+       // let {status} = JSON.parse(resp);
+       // if(status){
+            console.log(path);
+            showContent(path);
+       // }    
+    //})
 }
-function showContent(){
+function showContent(path=""){
         $('#topFrame').html(`<div class="embed-responsive embed-responsive-16by9 ">
-               <iframe class="embed-responsive-item" src="./viewPotree"></iframe>
+               <iframe class="embed-responsive-item" src="./viewPotree?path=${path}"></iframe>
            </div>`)
        $('#bottomFrame').html(`<div class="embed-responsive embed-responsive-16by9 ">
                <iframe class="embed-responsive-item" src="https://www.7mscorethai.com/"></iframe>

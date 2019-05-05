@@ -28,7 +28,6 @@ class Route {
          return !self::$isFound; 
     } 
 
-    
     private static function registerRoute($route) {
         global $Routes;
         $Routes[] = $route;

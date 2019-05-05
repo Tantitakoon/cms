@@ -88,7 +88,7 @@
 				let scene = viewer.scene;
 				let pointcloud = e.pointcloud;
 				
-				console.log(pointcloud.material);
+			//	console.log(pointcloud.material);
 				
 				let material = pointcloud.material;
 				material.size = 1;
@@ -112,11 +112,11 @@
 			
 			
 		}
-        $.post("./Potree/getView",{},(resp)=>{
-			let {status,viewPath} =  JSON.parse(resp);
-			console.log(status)
-            if(status) loadPotree(`${viewPath}`)
-        })
+        // $.post("./Potree/getView",{},(resp)=>{
+		// 	let {status,viewPath} =  JSON.parse(resp);
+		// 	console.log(status)
+        //     if(status) loadPotree(`${viewPath}`)
+        // })
 		 
 		//loadPotree(1);
 		
