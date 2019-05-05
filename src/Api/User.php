@@ -99,15 +99,15 @@ class User {
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';
                 $mail->SMTPAuth   = true;
-                $mail->Username   = 'auttapon.siriwaramas@gmail.com';
-                $mail->Password   = 'gfoqjzsbjzbwaahp';
+                $mail->Username   = 'cms.usermanager@gmail.com';
+                $mail->Password   = 'xeswtylbpeahcueh';
                 $mail->SMTPSecure = 'tls';
                 $mail->Port       = 587;
                 $mail->SMTPDebug = 0;
 
-                $mail->setFrom('auttapon.siriwaramas@gmail.com', 'Admin');
+                $mail->setFrom('cms.usermanager@gmail.com', 'Admin');
                 $mail->addAddress($data['user_email']);
-                $mail->addReplyTo('auttapon.siriwaramas@gmail.com', 'Information');
+                $mail->addReplyTo('cms.usermanager@gmail.com', 'Information');
 
 
 
