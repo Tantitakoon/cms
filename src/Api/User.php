@@ -4,6 +4,7 @@
  use PHPMailer\PHPMailer\Exception;
  use PHPMailer\PHPMailer\SMTP;
  use App\Api\Aes256;
+ header('Content-Type: application/json');
 class User {
     function checkEmail(){
             require_once "src/Db/connect.php";
@@ -151,7 +152,15 @@ class User {
         if(!mysqli_error($connect)) {
             if (mysqli_num_rows($result) > 0) {
                 while($row  = mysqli_fetch_assoc($result)){
-                    array_push($results['data'] ,$row);
+                    array_push($results['data'] ,[
+                                                    "user_id"=>$row['user_id'],
+                                                    "user_name"=>$row['user_name'],
+                                                    "user_password"=>$row['user_password'],
+                                                    "user_firstname"=>$row['user_firstname'],
+                                                    "user_lastname"=>$row['user_lastname'],
+                                                    "user_email"=>$row['user_email'],
+                                                    "user_image"=>$row['user_image']
+                                                  ]);
                     $results['count']++;
                 }
             }
