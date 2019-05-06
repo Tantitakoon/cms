@@ -9,7 +9,7 @@ $(document).ready(function () {
    
 
     $("#btSearch").click(function () {
-        $.post("./Potree/search",{},(resp)=>{
+        $.get("./Potree/search",{},(resp)=>{
             try{
                 let results = JSON.parse(resp);
                // console.log(results);

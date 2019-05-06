@@ -11,5 +11,10 @@ namespace App\Controllers;
         public static function search(){
             Potree::search();
         }
+        public static function renderProtree(){
+            self::CreateView("viewPotree.html");
+            $path = $_GET['path'] ?: "";
+            echo "<script>console.log('$path');loadPotree('$path')</script>";
+        }
     }
 ?>

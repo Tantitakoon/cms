@@ -76,45 +76,44 @@ class User {
     }
 
 
-    function badRequest(){
-        echo json_encode(["errorMessage" => "Bad request","status"=>false]);
-        http_response_code(400);
-    }
-
+ 
 
 
     function sendEmail($data){
 
 
-            $mail = new PHPMailer(true);
-            $timestamp = time();
-            $info_email = json_encode([
-                            "email"=>$data['user_email'],
-                            "dataEncrypt"=>Aes256::getDataEncrypt(),
-                            "timestamp"=> $timestamp
-                          ]);
-            $encode_email = urlencode(Aes256::encode($info_email));
             try {
-
+                
+                $mail = new PHPMailer(true);
+                $configs = include("config/config.php");
+                $hostname = $configs['HOSTNAME'];
+                $timestamp = time();
+                $info_email = json_encode([
+                                "email"=>$data['user_email'],
+                                "dataEncrypt"=>Aes256::getDataEncrypt(),
+                                "timestamp"=> $timestamp
+                            ]);
+                
+                $encode_email = urlencode(Aes256::encode($info_email));
                 $mail->SMTPDebug = 2;
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';
                 $mail->SMTPAuth   = true;
-                $mail->Username   = 'auttapon.siriwaramas@gmail.com';
-                $mail->Password   = 'gfoqjzsbjzbwaahp';
+                $mail->Username   = 'cms.usermanager@gmail.com';
+                $mail->Password   = 'xeswtylbpeahcueh';
                 $mail->SMTPSecure = 'tls';
                 $mail->Port       = 587;
                 $mail->SMTPDebug = 0;
 
-                $mail->setFrom('auttapon.siriwaramas@gmail.com', 'Admin');
+                $mail->setFrom('cms.usermanager@gmail.com', 'Admin');
                 $mail->addAddress($data['user_email']);
-                $mail->addReplyTo('auttapon.siriwaramas@gmail.com', 'Information');
+                $mail->addReplyTo('cms.usermanager@gmail.com', 'Information');
 
 
 
                 $mail->isHTML(true);
                 $mail->Subject = 'Reset password';
-                $mail->Body    = "<b>Reset your password </b> <a href='http://localhost/cms/resetPassword?info=$encode_email'>Click !!!</a>";
+                $mail->Body    = "<b>Reset your password </b> <a href='$hostname/cms/resetPassword?info=$encode_email'>Click !!!</a>";
 
                 if($mail->send()){
                     echo json_encode(['status'=>true]);
@@ -138,13 +137,30 @@ class User {
         if (mysqli_query($connect, $sql)) {
             $result = ["status"=>true,"message"=>"User Email : $user_email  =>  Update Success"];
         } else {
-            $result =  ["status"=>false,"errorMessage"=>"Error updating record: " . mysqli_error($conn),"sql"=> $sql];
+            $result =  ["status"=>false,"errorMessage"=>"Error updating record: " . mysqli_error($connect),"sql"=> $sql];
         }
         mysqli_close($connect);
         return  $result;
     }
 
-
+    function getUserByRole($role){
+        require_once "src/Db/connect.php";
+        $sql = "SELECT * FROM cms_users WHERE user_role = '$role';";
+        $results = array("data"=>[],"count"=>0);
+        $result = mysqli_query($connect, $sql);   
+        if(!mysqli_error($connect)) {
+            if (mysqli_num_rows($result) > 0) {
+                while($row  = mysqli_fetch_assoc($result)){
+                    array_push($results['data'] ,$row);
+                    $results['count']++;
+                }
+            }
+        }else{
+            $results  = ["status"=>false,"errorMessage"=>"Error query : " . mysqli_error($connect)];
+        }
+        mysqli_close($connect);
+        return $results;
+    }
 
 }
 

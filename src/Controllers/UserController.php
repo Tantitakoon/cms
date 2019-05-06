@@ -1,13 +1,14 @@
 <?php
 namespace App\Controllers;
     use App\Api\User;
+    use App\Classes\Http;
     use App\Api\Aes256;
     class UserController extends Controller{
         public static  function login(){
             if( isset($_POST['username']) && isset($_POST['password'])){
                  User::login();
             }else{
-                User::badRequest();
+                 Http::badRequest();
             }
         }
 
@@ -26,7 +27,7 @@ namespace App\Controllers;
                     echo json_encode($isEmailValid);
                 }
             }else{
-                User::badRequest();
+                Http::badRequest();
             }
         }
 
@@ -36,10 +37,10 @@ namespace App\Controllers;
                 if(self::verify($decodeData)){
                     parent::CreateView("resetPassword.html");
                 }else{
-                    User::badRequest();
+                    Http::badRequest();
                 }
             }else{
-                User::badRequest();
+                Http::badRequest();
             }
         }
 
@@ -50,10 +51,10 @@ namespace App\Controllers;
                    $result =  User::updatePassword($decodeData->email,$_POST['password']);
                    echo json_encode($result);
                 }else{
-                    User::badRequest();
+                    Http::badRequest();
                 }
             }else{
-                User::badRequest();
+                Http::badRequest();
             }
         }
 
@@ -65,5 +66,15 @@ namespace App\Controllers;
             return ( isset($decodeData->email) && isset($decodeData->timestamp) && isset($decodeData->dataEncrypt)
             && $decodeData->dataEncrypt == Aes256::getDataEncrypt() && ( time()- $decodeData->timestamp) < 300 );
         }
+
+        public function getUserByRole(){
+            if(isset($_GET['role'])){
+                $result =  User::getUserByRole($_GET['role']);
+                echo json_encode($result);
+            }else{
+                Http::badRequest();
+            }
+        }
+
     }
 ?>

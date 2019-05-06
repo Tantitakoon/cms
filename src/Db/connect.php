@@ -2,22 +2,13 @@
     error_reporting(1);
     
     $configs = include('config/config.php');
-    // $host = $config['DB_HOST'];
-    // $db = $config['DB_USERNAME'];
     $server_ip=$_SERVER[SERVER_ADDR];
-    
-    if ($server_ip == "127.0.0.1" || $server_ip == "::1"){
-        $host = $configs['DB_HOST'];
-        $db = $configs['DB_DATABASE'];
-        $username = $configs['DB_USERNAME'];
-        $password =  $configs['DB_PASSWORD'];
-    }else{
-        $host = $configs['DB_HOST'];
-        $db = $configs['DB_DATABASE'];
-        $username = $configs['DB_USERNAME'];
-        $password =  $configs['DB_PASSWORD'];
+    $host = $configs['DB_HOST'];
+    $db = $configs['DB_DATABASE'];
+    $username = $configs['DB_USERNAME'];
+    $password =  $configs['DB_PASSWORD'];
         
-    }
+    
  
     $connect = mysqli_connect($host,$username,$password,$db) ;
     
