@@ -11,7 +11,7 @@ $(document).ready(function () {
     $("#btSearch").click(function () {
         $.get("./Potree/search",{},(resp)=>{
             try{
-                let results = JSON.parse(resp);
+                let results = resp;
                // console.log(results);
                 let values = Object.values(results)
                 let count =0;

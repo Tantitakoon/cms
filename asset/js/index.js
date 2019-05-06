@@ -3,7 +3,7 @@ $(document).ready(function () {
      $("#logout").click(function () {
         $.post("./User/logout", {}, (resp) => {
 
-            let decodeJSON = JSON.parse(resp);
+            let decodeJSON = resp;
             let { status } = decodeJSON;
             if (status) {
                 $.dreamAlert({
@@ -64,7 +64,7 @@ $.fn.loginSubmit = function () {
       //  console.log(body);
         if (body.username && body.password) {
             $.post("./User/login", body, (resp) => {
-                let decodeJSON = JSON.parse(resp);
+                let decodeJSON = resp;
                 let { status } = decodeJSON;
                 if (status) {
                     $.dreamAlert({
@@ -162,7 +162,7 @@ function handleResetPassword(){
     if(emailUser){
         $.post("./User/resetPassword",{email:emailUser},(resp)=>{
          //   console.log(resp)
-            let decodeJSON = JSON.parse(resp);
+            let decodeJSON = resp;
             let {status} = decodeJSON;
             if(status){
                 $.dreamAlert({

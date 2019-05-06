@@ -1,7 +1,8 @@
 <?php 
  namespace App\Api;
+ header('Content-Type: application/json');
 class Potree {
-
+    
     public function getView(){
          if(isset($_SESSION['viewPath']))
             echo json_encode((object) array('viewPath' => $_SESSION['viewPath'],'status'=>true));

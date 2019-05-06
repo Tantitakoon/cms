@@ -15,7 +15,7 @@
                 IndexController::isLogin();
             });
             Route::set('/cms/map',function(){
-                PotreeController::CheckLogin("main.html");
+                Controller::CheckLogin("main.html");
             });
             Route::set('/cms/viewPotree',function(){
                 PotreeController::renderProtree();
@@ -54,9 +54,6 @@
         }
 
         function postApi(){
-            Route::set('/cms/Potree/setView',function(){
-                PotreeController::setView();
-            });
             Route::set('/cms/User/login',function(){
                 UserController::login();
             });
@@ -72,9 +69,6 @@
         }
 
         function getApi(){
-            Route::set('/cms/Potree/getView',function(){
-                PotreeController::getView();
-            });
             Route::set('/cms/Potree/search',function(){
                 PotreeController::search();
             });
