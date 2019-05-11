@@ -1,7 +1,6 @@
 
 $(document).ready(function () {
     $("#menu-addUser").hide()
-
     $("#managementLink").click(function () {
       
         if ($('#adminManagement ul').length == 0) {
@@ -15,7 +14,6 @@ $(document).ready(function () {
     });
     
     $("#accountLink").click(function(){
-        $("#menu-addUser").hide()
         $.fn.contentAccount()
     });
 

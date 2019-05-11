@@ -3,7 +3,7 @@
 
 
   
-  body {
+body {
     font-family: "Poppins", sans-serif;
     height: 100vh;
   }
@@ -59,7 +59,7 @@
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
-    top:10;
+    top:10px;
   }
   
   #formFooter {

@@ -7,6 +7,7 @@ $(document).ready(function () {
   }
 
   $.fn.contentAccount = function () {
+    $("#menu-addUser").hide()
     $("#page-content-wrapper").load("resource/templates/admin/views/accountUser.html"); 
   }
 });
