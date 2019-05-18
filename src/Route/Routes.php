@@ -33,7 +33,7 @@
                 Controller::CreateView("contact.html");
             });
             Route::set('/cms/admin',function(){
-                require 'resource/templates/admin/index.html';
+                Controller::CreateView("admin.html");
             });
             Route::set('/cms/resetPassword',function(){
                 UserController::checkResetPassword();  
