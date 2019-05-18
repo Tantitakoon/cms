@@ -8,7 +8,7 @@ if($domainName== "localhost"){
       'DB_DATABASE'=>'nextcloudwatertool',
       'DATA_ENCRYPT'=>'testData',
       'PASSWORD_AES'=>'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NTQ2MzM0ODR9.wYAti7R1JuzgOgoIgWaLisrYfYaROL5cBIQiByhEpQM',
-      'HOSTNAME'=>'http://localhost/'
+      'HOSTNAME'=>'http://localhost'
     );   
 }else if($domainName== "chaibwoot.no-ip.org"){
   return array(
@@ -18,7 +18,7 @@ if($domainName== "localhost"){
     'DB_DATABASE'=>'nextcloud',
     'DATA_ENCRYPT'=>'testData',
     'PASSWORD_AES'=>'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NTQ2MzM0ODR9.wYAti7R1JuzgOgoIgWaLisrYfYaROL5cBIQiByhEpQM',
-    'HOSTNAME'=>'https://chaibwoot.no-ip.org:4448/'
+    'HOSTNAME'=>'https://chaibwoot.no-ip.org:4448'
   );   
 } else if($domainName== "demo-thaiwatertool.online"){
   return array(
@@ -28,7 +28,7 @@ if($domainName== "localhost"){
     'DB_DATABASE'=>'nextcloudwatertool',
     'DATA_ENCRYPT'=>'testData',
     'PASSWORD_AES'=>'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NTQ2MzM0ODR9.wYAti7R1JuzgOgoIgWaLisrYfYaROL5cBIQiByhEpQM',
-    'HOSTNAME'=>'http://demo-thaiwatertool.online/'
+    'HOSTNAME'=>'http://demo-thaiwatertool.online'
   );   
 }
   

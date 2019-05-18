@@ -72,10 +72,9 @@
             Route::set('/cms/Potree/search',function(){
                 PotreeController::search();
             });
-            Route::set('/cms/User/getUserByRole',function(){
-                UserController::getUserByRole();
+            Route::set('/cms/User/getUser',function(){
+                UserController::getUser();
             });
-      
         }
 
    

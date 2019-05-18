@@ -67,14 +67,20 @@ namespace App\Controllers;
             && $decodeData->dataEncrypt == Aes256::getDataEncrypt() && ( time()- $decodeData->timestamp) < 300 );
         }
 
-        public function getUserByRole(){
-            if(isset($_GET['role'])){
-                $result =  User::getUserByRole($_GET['role']);
-                echo json_encode($result);
-            }else{
-                Http::badRequest();
+        public function getUser(){
+           // if(isset($_GET['role'])){
+            $sql = "SELECT * FROM cms_users";
+            if(isset($_GET['userName'])){
+                $userName = $_GET['userName'];
+                $sql = "SELECT * FROM cms_users WHERE user_name = '$userName';";
+            }else if(isset($_GET['role'])){
+                $role =$_GET['role'];
+                $sql = "SELECT * FROM cms_users WHERE user_role = '$role';";
             }
+            $result =  User::getUser($sql);
+            echo json_encode($result);
         }
+ 
 
     }
 ?>
