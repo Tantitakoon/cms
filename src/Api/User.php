@@ -144,9 +144,8 @@ class User {
         return  $result;
     }
 
-    function getUserByRole($role){
+    function getUser($sql){
         require_once "src/Db/connect.php";
-        $sql = "SELECT * FROM cms_users WHERE user_role = '$role';";
         $results = array("data"=>[],"count"=>0);
         $result = mysqli_query($connect, $sql);   
         if(!mysqli_error($connect)) {
@@ -155,11 +154,11 @@ class User {
                     array_push($results['data'] ,[
                                                     "user_id"=>$row['user_id'],
                                                     "user_name"=>$row['user_name'],
-                                                    "user_password"=>$row['user_password'],
                                                     "user_firstname"=>$row['user_firstname'],
                                                     "user_lastname"=>$row['user_lastname'],
                                                     "user_email"=>$row['user_email'],
-                                                    "user_image"=>$row['user_image']
+                                                    "user_image"=>$row['user_image'],
+                                                    "user_role"=>$row['user_role']
                                                   ]);
                     $results['count']++;
                 }
