@@ -3,6 +3,7 @@
     require __DIR__ . '/vendor/autoload.php';
     require_once( './src/_Globals.php' );
     require_once('config/config.php');
+    require_once('config/bodyParser.php');
     use App\Route\Routes;
     Routes::routerView();
     Routes::routerApi();

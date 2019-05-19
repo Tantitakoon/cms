@@ -168,6 +168,28 @@ class User {
         }
         mysqli_close($connect);
         return $results;
+    }  
+
+    function insertUser($data){
+        require_once "src/Db/connect.php";
+        $fields = [
+            "user_name","user_password","user_firstname","user_lastname","user_email","user_role"
+        ];
+        $vals  = [];
+        $results = ["status"=>true,"message"=>"insert success"];
+        foreach($fields as $field) {
+            $val = (isset($data[$field]))?"'$data[$field]'":"''";
+            array_push($vals,$val);
+        }
+        $fields = "(".join(",",$fields).")";
+        $vals = "(".join(",",$vals).")";
+        $sql = "INSERT INTO cms_users $fields VALUES $vals";
+
+        if (!mysqli_query($connect, $sql)) {
+            $results  = ["status"=>false,"errorMessage"=>"Error query : " . mysqli_error($connect)];
+        }  
+        mysqli_close($connect);
+        return $results;
     }
 
 }

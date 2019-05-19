@@ -66,6 +66,9 @@
             Route::set('/cms/User/updatePassword',function(){
                 UserController::updatePassword();
             });
+            Route::set('/cms/User/insertUser',function(){
+                UserController::insertUser();
+            });
         }
 
         function getApi(){
