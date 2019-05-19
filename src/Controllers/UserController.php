@@ -80,7 +80,41 @@ namespace App\Controllers;
             $result =  User::getUser($sql);
             echo json_encode($result);
         }
- 
+        public function insertUser(){
+            if(isset($_POST['user_name']) && isset($_POST['user_email'])){
+                $result =  User::insertUser($_POST);
+                echo json_encode($result);
+            }else{
+                Http::badRequest();
+            }
+        }
+        public function test(){
+            require_once "src/Db/connect.php";
+            $fields = [
+                "user_name","user_password","user_firstname","user_lastname","user_email","user_role"
+            ];
+            $vals  = [];
+            foreach($fields as $field) {
+                $val = (isset($_POST[$field]))?"'$_POST[$field]'":"''";
+                array_push($vals,$val);
+            }
+            $fields = "(".join(",",$fields).")";
+            $vals = "(".join(",",$vals).")";
+            $sql = "INSERT INTO cms_users $fields VALUES $vals";
+           /* echo $_POST['data']['name'];*/
+            /*$sql = "INSERT INTO cms_users 
+                   (user_name, user_password,user_firstname,user_lastname, user_email,user_role)
+             VALUES ('auttapon12', 'sdfsdf', 'sdfsdf','sdfsdf','auttapon.siriwaramas@gmail.com','admin')";
+            
+            if (mysqli_query($connect, $sql)) {
+                echo "New record created successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($connect);
+            }
+            
+            mysqli_close($connect);
+            */
+        }
 
     }
 ?>
