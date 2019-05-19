@@ -9,29 +9,57 @@ $(document).ready(function () {
 
   $.fn.validateInsertUser = function () {
     $("#noticeInsert").html("");
-    $("#nameUser").css("background-color", "white")
-    $("#emailUser").css("background-color", "white")
-    $("#passwordUser").css("background-color", "white")
-    $("#confirmPasswordUser").css("background-color", "white")
-    
-    
-    if ($("#nameUser").val() == '') {
-      $("#nameUser").css("background-color", "#FFCCCC")
+    $("#username").css("background-color", "white")
+    $("#email").css("background-color", "white")
+    $("#firstname").css("background-color", "white")
+    $("#lastname").css("background-color", "white")
+    $("#password").css("background-color", "white")
+    $("#confirmpassword").css("background-color", "white")
+    let username = $("#username").val()
+    let email = $("#email").val()
+    let firstname = $("#firstname").val()
+    let lastname = $("#lastname").val()
+    let password = $("#password").val()
+    let confirmpassword = $("#confirmpassword").val()
+    let role = $("#roleuser").val()
+    alert(role)
+    let flag = true;
+
+    if (username == '') {
+      $("#username").css("background-color", "#FFCCCC")
+      flag = false
     }
-    if ($("#emailUser").val() == '') {
-      $("#emailUser").css("background-color", "#FFCCCC")
+    if (email == '') {
+      $("#email").css("background-color", "#FFCCCC")
+      flag = false
     }
-    if ($("#passwordUser").val() == '') {
-      $("#passwordUser").css("background-color", "#FFCCCC")
+    if (firstname == '') {
+      $("#firstname").css("background-color", "#FFCCCC")
+      flag = false
+    }
+    if (lastname == '') {
+      $("#lastname").css("background-color", "#FFCCCC")
+      flag = false
+    }
+    if (password == '') {
+      $("#password").css("background-color", "#FFCCCC")
+      flag = false
+    }
+    if (confirmpassword == '') {
+      $("#confirmpassword").css("background-color", "#FFCCCC")
+      flag = false
     }
 
-    if($("#passwordUser").val()!=$("#confirmPasswordUser").val()){
+    if (password != confirmpassword) {
       $("#noticeInsert").html("<b>password not match</b>");
+      flag = false
+    }
+    if (flag) {
+      $.post("/cms/User/insertUser", { "user_name": username, "user_email": email, "user_firstname": firstname, "user_lastname": lastname, "user_password": password,"user_role":role  }, function (result) {
+             alert(JSON.stringify(result))
+      });
     }
 
-    if ($("#confirmPasswordUser").val() == '') {
-      $("#confirmPasswordUser").css("background-color", "#FFCCCC")
-    } 
 
   }
 });

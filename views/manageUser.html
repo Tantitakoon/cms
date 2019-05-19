@@ -1,39 +1,33 @@
 <link rel="stylesheet" type="text/css" href="/cms/asset/css/manageUser.css">
+<script src="/cms/asset/js/manageUser.js"></script>
 
 <div class="wrapper fadeInDown">
     <div id="formContent">
         <center>
             <div class="fadeIn first">
-                <div class="row justify-content-sm-center " >
+                <div class="row justify-content-sm-center ">
                     <img src="asset/img/index.jpg" class="img-fluid" alt="Responsive image">
                 </div>
             </div>
-        
+
             <div class="row">
-                    <div class="col-lg-12">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>NAME</th>
-                                    <th>EMAIL</th>
-                                    <th>ROLE</th>
-                                    <th>STATUS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Doe</td>
-                                    <td>john@example.com</td>
-                                    <td>Admin</td>
-                                    <td>Joined</td>
-                                    <td><a href="#"><span class="glyphicon glyphicon-pencil"></span></td></a>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col-lg-12">
+                    <table class="table table-striped" cellspacing="1">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>USERNAME</th>
+                                <th>NAME</th>
+                                <th>EMAIL</th>
+                                <th>ROLE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTable">
+
+                        </tbody>
+                    </table>
                 </div>
+            </div>
 
 
             <div id="formFooter">
@@ -43,3 +37,72 @@
 
     </div>
 </div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <img src="asset/img/index.jpg" class="img-fluid" alt="Responsive image">
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="informationUserLogin">
+                        <span id="noticeInsert" style="color:red">
+                          
+                        </span>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                </span>
+                                <input type="text" class="form-control" id="editemail" name="editemail" placeholder="E-mail" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="editusername" name="editusername" placeholder="Username" required="required">
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-tag"></i>
+                                </span>
+                                <input type="text" class="form-control" id="editfirstname" name="editfirstname" placeholder="Firstname" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-tag"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="editlastname" name="editlastname" placeholder="Lastname" required="required">
+                                </div>
+                            </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-knight"></i>
+                                </span>
+                                <select id="roleuser" class="form-control form-control-lg">
+                                    <option value="admin">Admin</option>
+                                    <option value="user">User</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" id="addNewUser" class="btn btn-primary btn-block btn-lg">SAVE</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">สถาบันสารสนเทศ ทรัพยากรน้ำเเละเกษตร</div>
+            </div>
+        </div>
+    </div>
