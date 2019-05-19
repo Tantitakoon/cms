@@ -1,5 +1,6 @@
 
-$(document).ready(function () { 
+$(document).ready(function () {
+    $("#backTOLogin").hide(); 
      $("#logout").click(function () {
         $.post("./User/logout", {}, (resp) => {
 

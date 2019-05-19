@@ -2,6 +2,7 @@
 <html>
  
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
@@ -79,9 +80,10 @@
             </div>
              <div class="row justify-content-md-center" style="padding-top: 15px;" >
                 <div class="col-md-auto">
-                    <button type="button" class="btn btn-dark" onclick="linkToUrl('."'./resource/templates/adminManage/HTML/index.html'".')">จัดการผู้ใช้งานระบบ</button>
+                    <button type="button" class="btn btn-dark" onclick="linkToUrl('."'admin'".')">จัดการผู้ใช้งานระบบ</button>
                 </div>
             </div>
+            
             <hr>';
             }  
         ?>
