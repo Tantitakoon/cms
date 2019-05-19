@@ -48,8 +48,8 @@ namespace App\Controllers;
             if( isset($_POST['info']) && isset($_POST['password'])){
                 $decodeData = self::decodeParams($_POST['info']);
                 if(self::verify($decodeData)){
-                   $result =  User::updatePassword($decodeData->email,$_POST['password']);
-                   echo json_encode($result);
+                   $results =  User::updatePassword($decodeData->email,$_POST['password']);
+                   echo json_encode($results);
                 }else{
                     Http::badRequest();
                 }
@@ -68,53 +68,41 @@ namespace App\Controllers;
         }
 
         public function getUser(){
-           // if(isset($_GET['role'])){
-            $sql = "SELECT * FROM cms_users";
-            if(isset($_GET['userName'])){
-                $userName = $_GET['userName'];
-                $sql = "SELECT * FROM cms_users WHERE user_name = '$userName';";
-            }else if(isset($_GET['role'])){
-                $role =$_GET['role'];
-                $sql = "SELECT * FROM cms_users WHERE user_role = '$role';";
-            }
-            $result =  User::getUser($sql);
-            echo json_encode($result);
+            $results =  User::getUser($_GET);
+            echo json_encode($results);
         }
+
         public function insertUser(){
             if(isset($_POST['user_name']) && isset($_POST['user_email'])){
-                $result =  User::insertUser($_POST);
-                echo json_encode($result);
+                $results =  User::insertUser($_POST);
+                echo json_encode($results);
             }else{
                 Http::badRequest();
             }
         }
-        public function test(){
-            require_once "src/Db/connect.php";
-            $fields = [
-                "user_name","user_password","user_firstname","user_lastname","user_email","user_role"
-            ];
-            $vals  = [];
-            foreach($fields as $field) {
-                $val = (isset($_POST[$field]))?"'$_POST[$field]'":"''";
-                array_push($vals,$val);
-            }
-            $fields = "(".join(",",$fields).")";
-            $vals = "(".join(",",$vals).")";
-            $sql = "INSERT INTO cms_users $fields VALUES $vals";
-           /* echo $_POST['data']['name'];*/
-            /*$sql = "INSERT INTO cms_users 
-                   (user_name, user_password,user_firstname,user_lastname, user_email,user_role)
-             VALUES ('auttapon12', 'sdfsdf', 'sdfsdf','sdfsdf','auttapon.siriwaramas@gmail.com','admin')";
-            
-            if (mysqli_query($connect, $sql)) {
-                echo "New record created successfully";
-            } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($connect);
-            }
-            
-            mysqli_close($connect);
-            */
+
+        public function getCurrentUser(){
+            $results = User::getCurrentUser();
+            echo json_encode($results);
         }
 
+        public function deleteUser(){
+            if( isset($_POST['user_name']) || isset($_POST['user_email'])){
+                $results =  User::deleteUser($_POST);
+                echo json_encode($results);
+            }else{
+                Http::badRequest();
+            }
+        }
+
+        public function updateUser(){
+            if( isset($_POST['user_name'])){
+                $results =  User::updateUser($_POST);
+                echo json_encode($results);
+            }else{
+                Http::badRequest();
+            }
+        }
+    
     }
 ?>

@@ -69,6 +69,12 @@
             Route::set('/cms/User/insertUser',function(){
                 UserController::insertUser();
             });
+            Route::set('/cms/User/deleteUser',function(){
+                UserController::deleteUser();
+            });
+            Route::set('/cms/User/updateUser',function(){
+                UserController::updateUser();
+            });
         }
 
         function getApi(){
@@ -77,6 +83,13 @@
             });
             Route::set('/cms/User/getUser',function(){
                 UserController::getUser();
+            });
+            Route::set('/cms/User/getCurrentUser',function(){
+                UserController::getCurrentUser();
+            });
+            Route::set('/cms/test',function(){
+                require_once "src/utils/functions/joinPath.php";
+                echo joinPath("/asdasd/dfssdg/","//dfgdfgd/fgdfg");
             });
         }
 
