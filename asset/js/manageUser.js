@@ -17,20 +17,6 @@ $.fn.editUserInformation = function (value) {
         $("#editemail").val(response.data[0].user_email)
         $("#editfirstname").val(response.data[0].user_firstname)
         $("#editlastname").val(response.data[0].user_lastname)
-
-        /*$(`#${value}`).empty();
-        $(`#${value}`).append(` 
-        <td>${response.data[0].user_id}</td>
-        <td> <input type="text" class="editUser" id="user_name" value="${response.data[0].user_name}" size="6"required="required"></td>
-        <td> <input type="text" class="editUser" id="user_firstname" value="${response.data[0].user_firstname} ${response.data[0].user_lastname}" size="15"required="required"></td>
-        <td> <input type="text" class="editUser" id="user_email" value="${response.data[0].user_email}"size="26" required="required"></td>
-        <td>  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option selected>Choose...</option>
-        <option value="admin">admin</option>
-        <option value="user">user</option>
-      </select></td>
-        <td><a href="#">save</a> <a href="#"  onclick="$.fn.userCancel('${response.data[0].user_name}')">cancel</a></span></td>
-        `)*/
     });
 }
 
@@ -71,6 +57,15 @@ $.fn.userCancel = function (value) {
     });
 }
 
-$.fn.userSave = function (value) {
+$("#saveEditUser").click(function(){
+   let user_name = $("#editusername").val()
+   let user_email = $("#editemail").val()
+   let user_firstname = $("#editfirstname").val()
+   let user_lastname = $("#editlastname").val()
+   let role = $("#editroleuser").val()
 
-}
+   /*$.post("/cms/User/updateUser", { "user_name": user_name, "user_email": user_email, "user_firstname": user_firstname, "user_lastname": user_lastname,"user_role": role }, function (result) {
+           
+   });*/
+
+});

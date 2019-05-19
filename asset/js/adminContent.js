@@ -87,3 +87,11 @@ $(document).ready(function () {
 
 
 
+$.fn.modalAddUser = function(){
+ $("#username").val("")
+ $("#email").val("")
+ $("#firstname").val("")
+ $("#lastname").val("")
+ $("#password").val("")
+ $("#confirmpassword").val("")
+}

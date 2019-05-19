@@ -11,5 +11,10 @@ $(document).ready(function () {
     $("#addNewUser").click(function(){
         $.fn.validateInsertUser()
     });
+    
+    $("#menu-addUser").click(function(){
+        $.fn.modalAddUser()
+    });
+    
   
 });
