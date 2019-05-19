@@ -87,10 +87,6 @@
             Route::set('/cms/User/getCurrentUser',function(){
                 UserController::getCurrentUser();
             });
-            Route::set('/cms/test',function(){
-                require_once "src/utils/functions/joinPath.php";
-                echo joinPath("/asdasd/dfssdg/","//dfgdfgd/fgdfg");
-            });
         }
 
    
