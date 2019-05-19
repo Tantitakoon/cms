@@ -22,7 +22,6 @@ $(document).ready(function () {
     let password = $("#password").val()
     let confirmpassword = $("#confirmpassword").val()
     let role = $("#roleuser").val()
-    alert(role)
     let flag = true;
 
     if (username == '') {
@@ -55,8 +54,30 @@ $(document).ready(function () {
       flag = false
     }
     if (flag) {
-      $.post("/cms/User/insertUser", { "user_name": username, "user_email": email, "user_firstname": firstname, "user_lastname": lastname, "user_password": password,"user_role":role  }, function (result) {
-             alert(JSON.stringify(result))
+      $.post("/cms/User/insertUser", { "user_name": username, "user_email": email, "user_firstname": firstname, "user_lastname": lastname, "user_password": password, "user_role": role }, function (result) {
+        if (result.status == true) {
+          $.dreamAlert({
+            'type': 'success',
+            'message': result.message,
+            'position': 'right'
+          });
+          $("#userTable").append(`
+          <tr id=${username}>
+            <td>${$("#userTable").children().length+1}</td>
+            <td>${username}</td>
+            <td>${firstname} ${lastname}</td>
+            <td>${email}</td>
+            <td>${role}</td>
+            <td><a href="#" onclick="$.fn.editUserInformation('${username}')"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editModal"></span></td></a>
+          </tr>`
+      );
+        }else{
+          $.dreamAlert({
+            'type': 'error',
+            'message': result.message,
+            'position': 'right'
+          });
+        }
       });
     }
 
