@@ -56,11 +56,7 @@ $(document).ready(function () {
     if (flag) {
       $.post("/cms/User/insertUser", { "user_name": username, "user_email": email, "user_firstname": firstname, "user_lastname": lastname, "user_password": password, "user_role": role }, function (result) {
         if (result.status == true) {
-          $.dreamAlert({
-            'type': 'success',
-            'message': result.message,
-            'position': 'right'
-          });
+          $.fn.alertSuccess(result.message)
           $("#userTable").append(`
           <tr id=${username}>
             <td>${$("#userTable").children().length+1}</td>
@@ -68,15 +64,11 @@ $(document).ready(function () {
             <td>${firstname} ${lastname}</td>
             <td>${email}</td>
             <td>${role}</td>
-            <td><a href="#" onclick="$.fn.editUserInformation('${username}')"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editModal"></span></td></a>
+            <td><a href="#"  class="ml-2" onclick="$.fn.editUserInformation('${username}')"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editModal"></a><a href="#" onclick="$.fn.createRemoveUserInformation('${username}')" class="ml-2"></span> <span data-toggle="modal" data-target="#removeModal" class="glyphicon glyphicon-remove"></span></a></td>
           </tr>`
-      );
+         );
         }else{
-          $.dreamAlert({
-            'type': 'error',
-            'message': result.message,
-            'position': 'right'
-          });
+          $.fn.alertFail(result.message)
         }
       });
     }
@@ -94,4 +86,20 @@ $.fn.modalAddUser = function(){
  $("#lastname").val("")
  $("#password").val("")
  $("#confirmpassword").val("")
+}
+
+$.fn.alertSuccess = function (message) {
+  $.dreamAlert({
+      'type': 'success',
+      'message': message,
+      'position': 'right'
+  });
+}
+
+$.fn.alertFail = function (message) {
+  $.dreamAlert({
+      'type': 'error',
+      'message': message,
+      'position': 'right'
+  });
 }
