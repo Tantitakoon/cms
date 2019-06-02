@@ -196,10 +196,19 @@ class User {
     }
 
     function getCurrentUser(){
-        $results = ["status"=>false,"errorMessage"=>"User hasn't yet login"];
-        if(isset($_SESSION['login'])){
-            $results = ["status"=>true,"message"=>"success" ,"data"=>$_SESSION['login']];;
-        } 
+        require_once "src/Db/connect.php";
+        $results = [];
+        $userName = $_SESSION['login']['user_name'];
+        $sql = "SELECT * FROM cms_users WHERE user_name = '$userName' LIMIT 1;";
+        $rows = mysqli_query($connect, $sql)  or die (mysqli_error($connect));
+        if (mysqli_num_rows($rows) > 0) {
+                $data = mysqli_fetch_assoc($rows);
+                unset($data["user_password"]);
+                $results =  ["data" => $data , "status" => true,"message"=>"success"];
+        } else {
+                $results = ["status"=>false,"errorMessage"=>"Can't find a userName."];
+        }
+        mysqli_close($connect);
         return $results;
     }
     
