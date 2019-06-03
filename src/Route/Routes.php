@@ -32,6 +32,9 @@
             Route::set('/cms/contact',function(){
                 Controller::CreateView("contact.html");
             });
+            Route::set('/cms/mapObgit',function(){
+                Controller::CreateView("obgit.html");
+            });
             Route::set('/cms/admin',function(){
                 Controller::CheckLogin("admin.html");
             });
