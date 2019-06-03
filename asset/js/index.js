@@ -68,12 +68,12 @@ $.fn.loginSubmit = function () {
                 let decodeJSON = resp;
                 let { status } = decodeJSON;
                 if (status) {
+                    $('#loginModal').modal('toggle');
                     $.dreamAlert({
                         'type': 'success',
                         'message': 'Login Success',
                         'position': 'right'
                     });
-                    $('#loginModal').modal('toggle');
                     createLogIn();
                     $("#logout").show();
                     $("#login").hide();
