@@ -82,7 +82,11 @@ namespace App\Controllers;
         }
 
         public function getCurrentUser(){
-            $results = User::getCurrentUser();
+            header('Content-Type: application/json');
+            $results = ["status"=>false,"errorMessage"=>"User hasn't yet login"];
+            if(isset($_SESSION['login'])){
+                $results = User::getCurrentUser();
+            } 
             echo json_encode($results);
         }
 
