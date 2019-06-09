@@ -5,7 +5,7 @@ body {
 
 #sidebar-wrapper {
   min-height: 100vh;
-  margin-left: -15rem;
+  margin-left: -20rem;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
@@ -13,12 +13,12 @@ body {
 }
 
 #sidebar-wrapper .sidebar-heading {
-  padding: 0.875rem 1.25rem;
+  padding: 1.875rem 1.25rem;
   font-size: 1.2rem;
 }
 
 #sidebar-wrapper .list-group {
-  width: 15rem;
+  width: 20rem;
 }
 
 #page-content-wrapper {
@@ -28,6 +28,16 @@ body {
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
 }
+a.list-group-item.list-group-item-action.bg-light {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+a.list-group-item.list-group-item-action {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+    
 
 @media (min-width: 768px) {
   #sidebar-wrapper {
@@ -40,6 +50,12 @@ body {
   }
 
   #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
+    margin-left: -20rem;
   }
+
+  
 }
+
+
+
+

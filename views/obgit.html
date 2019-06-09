@@ -23,7 +23,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="asset/css/simple-sidebar.css" rel="stylesheet">
 
+
 </head>
+
 
 <body>
 
@@ -31,9 +33,67 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">แผนที่ OrbitGT </div>
+      <div class="sidebar-heading">
+        <b>POINT COULD MAP</b>
+      </div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">CITY</span>
+            </div>
+            <select class="form-control" id="province">
+              <option>กรุงเทพ</option>
+            </select>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">File Name</span>
+            </div>
+            <select class="form-control" id="province">
+              <option>Velodyne001</option>
+            </select>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Pano ID</span>
+            </div>
+            <select class="form-control" id="province">
+              <option>205</option>
+            </select>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">
+          <div class="row">
+            <div class="col-md-6">
+              x-position
+            </div>
+            <div class="col-md-6">
+              10.12315952
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              y-position
+            </div>
+            <div class="col-md-6">
+              10.12315952
+            </div>
+          </div>
+
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="row">
+            <button type="button" class="btn btn-dark ml-3">3D MAP</button>
+            <button type="button" class="btn btn-dark  ml-3">POINT COULD</button>
+          </div>
+
+        </a>
+
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -42,7 +102,9 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-          <a href="#" id="menu-toggle" ><i class="material-icons" style="font-size:36px">view_list</i></a>
+        <a href="#" id="menu-toggle">
+          <i class="material-icons" style="font-size:36px">view_list</i>
+        </a>
         <!--button class="btn btn-primary" >Toggle Menu</button-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +114,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">HOME
+              <a class="nav-link" href="/cms"><i class="material-icons" style="font-size:30px;color: blue">keyboard_backspace</i>
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -61,12 +123,8 @@
       </nav>
 
       <div class="container-fluid">
-        <h1 class="mt-4">Simple Sidebar</h1>
-        <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger
-          screens. When toggled using the button below, the menu will change.</p>
-        <p>Make sure to keep all page content within the
-          <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the
-          <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
+        <h1 class="mt-4">วาง map ที่นี่</h1>
+       
       </div>
     </div>
     <!-- /#page-content-wrapper -->
