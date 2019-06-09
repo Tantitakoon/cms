@@ -5,6 +5,7 @@
     use App\Controllers\IndexController;
     use App\Controllers\PotreeController;
     use App\Controllers\UserController;
+    use App\Controllers\FileController;
     use App\Controllers\Controller;
     class Routes {
      
@@ -33,6 +34,7 @@
                 Controller::CreateView("contact.html");
             });
             Route::set('/cms/mapObgit',function(){
+                Controller::getDomain();
                 Controller::CreateView("obgit.html");
             });
             Route::set('/cms/admin',function(){
@@ -89,6 +91,9 @@
             });
             Route::set('/cms/User/getCurrentUser',function(){
                 UserController::getCurrentUser();
+            });
+            Route::set('/cms/File/download',function(){
+                 FileController::getKML();
             });
         }
 

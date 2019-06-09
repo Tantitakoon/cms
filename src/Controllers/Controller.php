@@ -8,6 +8,11 @@ namespace App\Controllers;
         public static function CheckLogin($fileName){
             if(isset($_SESSION['login'])) require "views/$fileName";
             else  echo "<script> window.location.href = '/cms/?login=true'; </script>";
-         }
+        }
+        public function getDomain(){
+            $configs = include('config/config.php');
+            $domainName = $configs["HOSTNAME"];
+            echo "<script>let domainName  = '$domainName';</script>";
+        }
     }
 ?>

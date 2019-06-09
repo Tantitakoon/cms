@@ -22,8 +22,14 @@
   <!-- Custom styles for this template -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="asset/css/simple-sidebar.css" rel="stylesheet">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB2go0vTmolhjUXN4nCTcAZe9-9afNqR8">
 
-
+  </script>
+  <style>
+    #map {
+      height: 60%;
+    }
+  </style>
 </head>
 
 
@@ -88,8 +94,8 @@
         </a>
         <a href="#" class="list-group-item list-group-item-action">
           <div class="row">
-            <button type="button" class="btn btn-dark ml-3">3D MAP</button>
-            <button type="button" class="btn btn-dark  ml-3">POINT COULD</button>
+            <button type="button" class="btn btn-dark ml-3" id="btMap">3D MAP</button>
+            <button type="button" class="btn btn-dark  ml-3" id="btPointCloud">POINT COULD</button>
           </div>
 
         </a>
@@ -122,10 +128,7 @@
         </div>
       </nav>
 
-      <div class="container-fluid" id="map">
-                     map
-       
-      </div>
+      <div class="container-fluid" id="map"></div>
     </div>
     <!-- /#page-content-wrapper -->
 
@@ -136,6 +139,42 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
+    $('#btMap').click(() => {
+      displayMap();
+    })
+    $('#btPointCloud').click(() => {
+      $("#map").html(` <div class="embed-responsive embed-responsive-16by9 ">
+               <iframe class="embed-responsive-item" src="./viewPotree?path=f1519_0005_test" allowfullscreen></iframe>
+           </div>`)
+
+    })
+
+    function displayMap() {
+      let map = new google.maps.Map(document.getElementById('map'), {});
+      let nameFile = 'air_traffic.kml';
+      console.log(domainName);
+      let src = joinUrl(domainName, `/cms/File/download?name=${nameFile}`);//'http://localhost/cms/File/download?name=air_traffic.kml';
+      console.log(src)
+      let kmlLayer = new google.maps.KmlLayer(src, { map: map });
+    }
+
+    function joinUrl(text1, text2) {
+      let result = "";
+      text1 = text1.trim();
+      text2 = text2.trim();
+      if (text1.endsWith("/")) {
+        result = (text2.startsWith("/")) ? text1 + text2.substring(1, text2.length) : text1 + text2;
+      }else result = (text2.startsWith("/"))?text1+text2:text1+"/"+text2;
+      return result;
+  }
+
+    function pathJoin(parts, sep) {
+      var separator = sep || '/';
+      var replace = new RegExp(separator + '{1,}', 'g');
+      return parts.join(separator).replace(replace, separator);
+    }
+
+    var path = pathJoin(['a/', 'b', 'c//'])
   </script>
 
 </body>
