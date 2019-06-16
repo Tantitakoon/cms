@@ -22,12 +22,12 @@
   <!-- Custom styles for this template -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="asset/css/simple-sidebar.css" rel="stylesheet">
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB2go0vTmolhjUXN4nCTcAZe9-9afNqR8">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB2go0vTmolhjUXN4nCTcAZe9-9afNqR8&callback=displayMap">
 
   </script>
   <style>
     #map {
-      height: 60%;
+      height: 100%;
     }
   </style>
 </head>
@@ -75,19 +75,19 @@
         </a>
         <a href="#" class="list-group-item list-group-item-action bg-light">
           <div class="row">
-            <div class="col-md-6">
-              x-position
+            <div class="col-md-3">
+              latitude
             </div>
-            <div class="col-md-6">
-              10.12315952
+            <div class="col-md-6" id="latitude">
+
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
-              y-position
+            <div class="col-md-3">
+              longitude
             </div>
-            <div class="col-md-6">
-              10.12315952
+            <div class="col-md-6" id="longitude">
+
             </div>
           </div>
 
@@ -135,6 +135,7 @@
   </div>
 
   <script>
+    let markers = []
     $("#menu-toggle").click(function (e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
@@ -152,10 +153,45 @@
     function displayMap() {
       let map = new google.maps.Map(document.getElementById('map'), {});
       let nameFile = 'air_traffic.kml';
+    
       console.log(domainName);
       let src = joinUrl(domainName, `/cms/File/download?name=${nameFile}`);//'http://localhost/cms/File/download?name=air_traffic.kml';
-      console.log(src)
+ 
       let kmlLayer = new google.maps.KmlLayer(src, { map: map });
+
+      google.maps.event.addListener(map, 'click', function (event) {
+        for (let markerr of markers) markerr.setMap(null)
+        markers = []
+        changeTextLatLng(event.latLng)
+        placeMarker(map, event.latLng);
+      });
+      function placeMarker(map, location) {
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+
+
+        markers.push(marker)
+        var infowindow = new google.maps.InfoWindow({
+          content: `${createBt3DMAP(location)}   ${createBtPointCould(location)}`
+        });
+
+        infowindow.open(map, marker);
+      }
+    }
+ 
+    function createBt3DMAP(location){
+      return `<button class ="btn btn-info" onclick = "window.open('/cms/panoView?lat=${location.lat()}&lng=${location.lng()}')" >3D MAP</button>`
+    }
+
+    function createBtPointCould(location){
+      return `<button class ="btn btn-info" onclick = "window.open('./viewPotree?path=f1519_0005_test&lat=${location.lat()}&lng=${location.lng()}')" >POINT CLOUD</button>`
+    }
+ 
+    function changeTextLatLng(location){
+      document.getElementById("latitude").innerHTML = location.lat();
+      document.getElementById("longitude").innerHTML = location.lng();
     }
 
     function joinUrl(text1, text2) {
@@ -164,17 +200,16 @@
       text2 = text2.trim();
       if (text1.endsWith("/")) {
         result = (text2.startsWith("/")) ? text1 + text2.substring(1, text2.length) : text1 + text2;
-      }else result = (text2.startsWith("/"))?text1+text2:text1+"/"+text2;
+      } else result = (text2.startsWith("/")) ? text1 + text2 : text1 + "/" + text2;
       return result;
-  }
+    }
 
     function pathJoin(parts, sep) {
       var separator = sep || '/';
       var replace = new RegExp(separator + '{1,}', 'g');
       return parts.join(separator).replace(replace, separator);
     }
-
-    var path = pathJoin(['a/', 'b', 'c//'])
+ 
   </script>
 
 </body>

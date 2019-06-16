@@ -43,6 +43,17 @@
             Route::set('/cms/resetPassword',function(){
                 UserController::checkResetPassword();  
             });
+            Route::set('/cms/panoView',function(){
+                if(isset($_GET['lat']) && isset($_GET['lng'])){
+                    $lat =$_GET['lat'];
+                    $lng = $_GET['lng'];
+                    echo "<script>let lat=$lat; let lng =$lng;</script>";
+                    Controller::CreateView("panoview.html");  
+                }else{
+                    Http::notFoundRequest();
+                }
+                
+            });
 
             
         }
