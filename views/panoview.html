@@ -25,18 +25,10 @@
 <body>
   <div id="map"></div>
   <script>
-    let markers = []
     function initMap() {
-    
       var panorama = new google.maps.StreetViewPanorama(
           document.getElementById('map'), {
-            position: {lat:lat, lng:lng},
-            addressControlOptions: {
-              position: google.maps.ControlPosition.BOTTOM_CENTER
-            },
-            linksControl: false,
-            panControl: false,
-            enableCloseButton: false
+            position: {lat:lat, lng:lng}
       });
     }
   </script>

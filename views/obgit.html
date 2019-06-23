@@ -93,9 +93,9 @@
 
         </a>
         <a href="#" class="list-group-item list-group-item-action">
-          <div class="row">
-            <button type="button" class="btn btn-dark ml-3" id="btMap">3D MAP</button>
-            <button type="button" class="btn btn-dark  ml-3" id="btPointCloud">POINT COULD</button>
+          <div class="row" style="text-align:center;">
+            <button style="position:absolute;" type="button" class="btn btn-dark ml-3" id="btMultiple">Open multiple</button>
+            <!-- <button type="button" class="btn btn-dark  ml-3" id="btPointCloud">POINT COULD</button> -->
           </div>
 
         </a>
@@ -128,7 +128,10 @@
         </div>
       </nav>
 
-      <div class="container-fluid" id="map"></div>
+
+      <div class="container-fluid" id="map" style="width: 100%; height: 100%;float:left"></div>
+      <div class="container-fluid" id="pano" style="width: 0%; height: 0%;float:left"></div>
+
     </div>
     <!-- /#page-content-wrapper -->
 
@@ -136,12 +139,20 @@
 
   <script>
     let markers = []
+    let isDisplayMulti = false;
     $("#menu-toggle").click(function (e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
-    $('#btMap').click(() => {
-      displayMap();
+    $('#btMultiple').click(() => {
+      //displayMap();
+      if (isDisplayMulti) {
+        hideMulti();
+      } else {
+        displayMulti();
+      }
+
+
     })
     $('#btPointCloud').click(() => {
       $("#map").html(` <div class="embed-responsive embed-responsive-16by9 ">
@@ -149,47 +160,101 @@
            </div>`)
 
     })
+    function hideMulti() {
+      let mapDom = $('#map');
+      let panoDom = $('#pano');
+      let btDisplayMulti = $('#btMultiple');
+      btDisplayMulti.html("Open multiple")
+      mapDom.css('width', '100%');
+      panoDom.css('width', '0%');
+      panoDom.css('height', '0%');
+      isDisplayMulti = false;
+    }
+    function displayMulti() {
+      let mapDom = $('#map');
+      let panoDom = $('#pano');
+      let latitude = $("#latitude").html();
+      let longitude = $("#longitude").html();
+      let btDisplayMulti = $('#btMultiple');
+      let isValuable = (val) => !isNaN(parseFloat(val));
+      if (isValuable(latitude) && isValuable(longitude)) {
+        let streetViewService = new google.maps.StreetViewService();
+        let latLng = new google.maps.LatLng(parseFloat(latitude), parseFloat(longitude));
+        streetViewService.getPanoramaByLocation(latLng, 100, function (streetViewPanoramaData, status) {
+          if (status === google.maps.StreetViewStatus.OK) {
+            mapDom.css('width', '50%');
+            panoDom.css('width', '50%');
+            panoDom.css('height', '100%');
+            var panorama = new google.maps.StreetViewPanorama(
+              document.getElementById('pano'), {
+                position: { lat: parseFloat(latitude), lng: parseFloat(longitude) }
+              });
+            btDisplayMulti.html("Close multiple")
+            isDisplayMulti = true;
+          } else {
+            alert(`it dosen't avaliable !!!`);
+          }
+        });
+
+      } else {
+        alert("Click on a map");
+      }
+    }
+
+
 
     function displayMap() {
       let map = new google.maps.Map(document.getElementById('map'), {});
-      let nameFile = 'air_traffic.kml';
-    
+      let nameFile = 'test.kml';
+
       console.log(domainName);
       let src = joinUrl(domainName, `/cms/File/download?name=${nameFile}`);//'http://localhost/cms/File/download?name=air_traffic.kml';
- 
-      let kmlLayer = new google.maps.KmlLayer(src, { map: map });
 
-      google.maps.event.addListener(map, 'click', function (event) {
-        for (let markerr of markers) markerr.setMap(null)
-        markers = []
-        changeTextLatLng(event.latLng)
-        placeMarker(map, event.latLng);
+
+      map.addListener('click', (mapEvent) => {
+        clearMarkers();
+        changeTextLatLng(mapEvent.latLng);
+        placeMarker(map, mapEvent.latLng);
+      })
+
+      let kmlLayer = new google.maps.KmlLayer({ url: src, map: map });
+      kmlLayer.addListener('click', (kmlEvent) => {
+        clearMarkers();
+        changeTextLatLng(kmlEvent.latLng);
+        kmlEvent.featureData.infoWindowHtml = `${createBt3DMAP(kmlEvent.latLng)}   ${createBtPointCould(kmlEvent.latLng)}`;
+
+        placeMarker(map, kmlEvent.latLng);
+
       });
+
       function placeMarker(map, location) {
         var marker = new google.maps.Marker({
           position: location,
           map: map
         });
-
-
         markers.push(marker)
-        var infowindow = new google.maps.InfoWindow({
-          content: `${createBt3DMAP(location)}   ${createBtPointCould(location)}`
-        });
 
-        infowindow.open(map, marker);
+        // var infowindow = new google.maps.InfoWindow({
+        //   content: `${createBt3DMAP(location)}   ${createBtPointCould(location)}`
+        // });
+
+        // infowindow.open(map, marker);
       }
     }
- 
-    function createBt3DMAP(location){
+
+    function clearMarkers() {
+      for (let markerr of markers) markerr.setMap(null)
+      markers = []
+    }
+    function createBt3DMAP(location) {
       return `<button class ="btn btn-info" onclick = "window.open('/cms/panoView?lat=${location.lat()}&lng=${location.lng()}')" >3D MAP</button>`
     }
 
-    function createBtPointCould(location){
+    function createBtPointCould(location) {
       return `<button class ="btn btn-info" onclick = "window.open('./viewPotree?path=f1519_0005_test&lat=${location.lat()}&lng=${location.lng()}')" >POINT CLOUD</button>`
     }
- 
-    function changeTextLatLng(location){
+
+    function changeTextLatLng(location) {
       document.getElementById("latitude").innerHTML = location.lat();
       document.getElementById("longitude").innerHTML = location.lng();
     }
@@ -209,7 +274,6 @@
       var replace = new RegExp(separator + '{1,}', 'g');
       return parts.join(separator).replace(replace, separator);
     }
- 
   </script>
 
 </body>
