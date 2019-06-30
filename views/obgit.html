@@ -206,7 +206,7 @@
     function displayMap() {
       let map = new google.maps.Map(document.getElementById('map'), {});
       let nameFile = 'test.kml';
-
+      domainName = "http://demo-thaiwatertool.online/"
       console.log(domainName);
       let src = joinUrl(domainName, `/cms/File/download?name=${nameFile}`);//'http://localhost/cms/File/download?name=air_traffic.kml';
 
