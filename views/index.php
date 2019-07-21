@@ -2,7 +2,7 @@
 <html>
  
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
@@ -37,11 +37,11 @@
             <img src="./asset/img/index.jpg" class="img-fluid" alt="Responsive image">
         </div>
         <div class="row justify-content-md-center" style="padding-top: 25px;">
-            <h1>HAll Online Post Processing System </h1>
+            <h1>HII Online Post Processing System </h1>
         </div>
         <div class="row justify-content-md-center" style="padding-top: 25px;">
             <div class="col-md-auto">
-                <button type="button" class="btn btn-dark" onclick="linkToUrl('./map')">แผนที่ OrbitGT</button>
+                <button type="button" class="btn btn-dark" onclick="linkToUrl('./map')">3D Panorama System</button>
             </div>
         </div>
         <div class="row justify-content-md-center" style="padding-top: 15px;">

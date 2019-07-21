@@ -16,7 +16,8 @@
                 IndexController::isLogin();
             });
             Route::set('/cms/map',function(){
-                Controller::CheckLogin("main.html");
+                //Controller::CheckLogin("main.html");
+                  Controller::CheckLogin("obgit.html");
             });
             Route::set('/cms/viewPotree',function(){
                 PotreeController::renderProtree();
