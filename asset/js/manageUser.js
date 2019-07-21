@@ -6,7 +6,7 @@ $(document).ready(function () {
 $.fn.editUserInformation = function (value,row) {
   
     $.get(`/cms/User/getUser?userName=${value}`, function (response, status) {
-
+     
         $("#editusername").val(response.data[0].user_name)
         $("#editemail").val(response.data[0].user_email)
         $("#editfirstname").val(response.data[0].user_firstname)
@@ -25,10 +25,12 @@ $.fn.initUserInformation = function () {
                       <td>${row}</td>
                       <td>${value.user_name}</td>
                       <td>${value.user_firstname} ${value.user_lastname}</td>
-                      <td>${value.user_email}</td>
+                      <td>${value.user_email} </td>
                       <td>${value.user_role}</td>
-                      <td><a href="#"  class="ml-2" onclick="$.fn.editUserInformation('${value.user_name}','${row++}')"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editModal"></a><a href="#" onclick="$.fn.createRemoveUserInformation('${value.user_name}')" class="ml-2"></span> <span data-toggle="modal" data-target="#removeModal" class="glyphicon glyphicon-remove"></span></a></td>
-                    </tr>`
+                      <td><a href="#"  class="ml-2" onclick="$.fn.editUserInformation('${value.user_name}','${row++}')"><i class="material-icons" data-toggle="modal" data-target="#editModal">create</i></a>
+                      <a href="#" onclick="$.fn.createRemoveUserInformation('${value.user_name}')" class="ml-2"><i data-toggle="modal" data-target="#removeModal" class="material-icons">delete</i></a>
+                      </td>  
+                      </tr>`
                 );
             });
 
@@ -47,6 +49,7 @@ $("#saveEditUser").click(function () {
 
     $.post("/cms/User/updateUser", { "user_name": user_name, "user_email": user_email, "user_firstname": user_firstname, "user_lastname": user_lastname, "user_role": role }, function (result) {
         if (result.status == true) {
+        
             $.fn.alertSuccess(result.message)
             $(`#${user_name}`).empty();
             $(`#${user_name}`).append(`
@@ -55,7 +58,9 @@ $("#saveEditUser").click(function () {
             <td>${user_firstname} ${user_lastname}</td>
             <td>${user_email}</td>
             <td>${role}</td>
-            <td><a href="#"  class="ml-2" onclick="$.fn.editUserInformation('${user_name}','${ID}')"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editModal"></a><a href="#" onclick="$.fn.createRemoveUserInformation('${user_name}')" class="ml-2"></span> <span data-toggle="modal" data-target="#removeModal" class="glyphicon glyphicon-remove"></span></a></td>
+            <td><a href="#"  class="ml-2" onclick="$.fn.editUserInformation('${user_name}','${ID}')"><i class="material-icons" data-toggle="modal" data-target="#editModal">create</i></a>
+            <a href="#" onclick="$.fn.createRemoveUserInformation('${user_name}')" class="ml-2"><i data-toggle="modal" data-target="#removeModal" class="material-icons">delete</i></a>
+            </td> 
             `)
         } else {
             $.fn.alertFail(result.message)

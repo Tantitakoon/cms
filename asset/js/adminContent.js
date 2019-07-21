@@ -1,10 +1,11 @@
 $(document).ready(function () {
-  $("#page-content-wrapper").load("/cms/views/manageUser.html");
+ 
+  $("#contentAdmin").load("/cms/views/manageUser.html");
   $.fn.contentAccount = function () {
-    $("#page-content-wrapper").load("/cms/views/accountUser.html");
+    $("#contentAdmin").load("/cms/views/accountUser.html");
   }
   $.fn.contentMangement = function () {
-    $("#page-content-wrapper").load("/cms/views/manageUser.html");
+    $("#contentAdmin").load("/cms/views/manageUser.html");
   }
 
   $.fn.validateInsertUser = function () {
@@ -56,7 +57,14 @@ $(document).ready(function () {
     if (flag) {
       $.post("/cms/User/insertUser", { "user_name": username, "user_email": email, "user_firstname": firstname, "user_lastname": lastname, "user_password": password, "user_role": role }, function (result) {
         if (result.status == true) {
+        
           $.fn.alertSuccess(result.message)
+          $("#username").val("")
+          $("#email").val("")
+          $("#firstname").val("")
+          $("#lastname").val("")
+          $("#password").val("")
+          $("#confirmpassword").val("")
           $("#userTable").append(`
           <tr id=${username}>
             <td>${$("#userTable").children().length+1}</td>
@@ -64,7 +72,10 @@ $(document).ready(function () {
             <td>${firstname} ${lastname}</td>
             <td>${email}</td>
             <td>${role}</td>
-            <td><a href="#"  class="ml-2" onclick="$.fn.editUserInformation('${username}')"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editModal"></a><a href="#" onclick="$.fn.createRemoveUserInformation('${username}')" class="ml-2"></span> <span data-toggle="modal" data-target="#removeModal" class="glyphicon glyphicon-remove"></span></a></td>
+            <td><a href="#"  class="ml-2" onclick="$.fn.editUserInformation('${username}','${$("#userTable").children().length+1}')"><i class="material-icons" data-toggle="modal" data-target="#editModal">create</i></a>
+                      <a href="#" onclick="$.fn.createRemoveUserInformation('${username}')" class="ml-2"><i data-toggle="modal" data-target="#removeModal" class="material-icons">delete</i></a>
+                      </td>
+          
           </tr>`
          );
         }else{

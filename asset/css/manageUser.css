@@ -53,13 +53,13 @@ body {
     background: #fff;
     padding: 30px;
     width: 90%;
-    max-width: 900px;
+    max-width: 1100px;
     position: absolute;
     padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
-    top:10px;
+    top:100px;
   }
   
   #formFooter {
@@ -146,14 +146,14 @@ body {
   /* ANIMATIONS */
   
   /* Simple CSS3 Fade-in-down Animation */
-  .fadeInDown {
+  /*.fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
-  }
+  }*/
   
   @-webkit-keyframes fadeInDown {
     0% {
@@ -250,6 +250,10 @@ body {
     height: 24px;
     font-size: 10px;
   }
+  img.img-fluid {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
 
   
   @media only screen and (max-width: 900px) {
@@ -263,6 +267,16 @@ body {
       height: 24px;
       font-size: 10px;
     }
+    i.material-icons {
+      font-size: 10px;
+    }
+    .table td, .table th {
+      padding: 0.15rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6;
+  }
+  }
+
   
   }
   @media only screen and (max-width: 600px) {
@@ -276,6 +290,16 @@ body {
         height: 24px;
         font-size: 7px;
       }
+      i.material-icons {
+        font-size: 10px;
+      }
+      .table td, .table th {
+        padding: 0.15rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+   
+    
     
     }
   

@@ -38,7 +38,7 @@
                 Controller::CreateView("obgit.html");
             });
             Route::set('/cms/admin',function(){
-                Controller::CheckLogin("admin.html");
+                Controller::CheckLogin("adminV2.html");
             });
             Route::set('/cms/resetPassword',function(){
                 UserController::checkResetPassword();  

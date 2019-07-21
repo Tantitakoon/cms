@@ -1,73 +1,102 @@
 <link rel="stylesheet" type="text/css" href="/cms/asset/css/accountUser.css">
 <script src="/cms/asset/js/accountUser.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <div class="wrapper fadeInDown">
     <div id="formContent">
-        <center>
-            <div class="fadeIn first">
-                <div class="row justify-content-sm-center ">
+            <div class="card">
+                    <div class="card-header">
+                      ข้อมูลบุลคล <a href="#" onclick="$.fn.EditAccount()"  data-toggle="modal" data-target="#editModal"><i class="material-icons editIcon" >create</i></a>
+                    </div>
+                    <div class="card-body">
+                      <blockquote class="blockquote mb-0">
+                        <cite  >Username : <span id="usernameprofile"></span></cite><br>
+                        <cite  >Firstname : <span id="firstnameprofile"></span></cite><br>
+                        <cite  >Lastname : <span id="lastnameprofile"></span></cite><br>
+                        <cite >E-mail : <span id="emailprofile"></span></cite><br>
+                        <footer class="blockquote-footer">ผู้ดูแลระบบ <cite title="Source Title">สถาบันสารสนเทศ ทรัพยากรน้ำเเละการเกษตร</cite></footer>
+                      </blockquote>
+                    </div>
+                  </div>
+                  <div class="card">
+                        <div class="card-header">
+                          บทบาท
+                        </div>
+                        <div class="card-body">
+                          <blockquote class="blockquote mb-0">
+                                <cite >Role : <span  id="roleprofile"></span></cite>
+                            <footer class="blockquote-footer">สถานะ <cite title="Source Title">สำหรับผู้ดูแลระบบ</cite></footer>
+                          </blockquote>
+                        </div>
+                      </div>
+        
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-login">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
                     <img src="asset/img/index.jpg" class="img-fluid" alt="Responsive image">
-                </div>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
+            <div class="modal-body">
+                <div id="informationUserLogin">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-envelope"></i>
+                            </span>
+                            <input type="text" class="form-control" id="editemail" name="editemail" placeholder="E-mail" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <input type="text" class="form-control" id="editusername" name="editusername" placeholder="Username" required="required" readonly>
+                            </div>
+                        </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-tag"></i>
+                            </span>
+                            <input type="text" class="form-control" id="editfirstname" name="editfirstname" placeholder="Firstname" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-tag"></i>
+                                </span>
+                                <input type="text" class="form-control" id="editlastname" name="editlastname" placeholder="Lastname" required="required">
+                            </div>
+                        </div>
 
-            <div class="form-group col-md-12 col-sm-12">
-                <div class="row">
-                    <div class="input-group col-md-4 col-sm-4 col-4">
-                        <h6>USERNAME</h6>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-knight"></i>
+                            </span>
+                            <select id="editroleuser" class="form-control form-control-lg">
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="input-group col-md-4 col-sm-4 col-4">
-                        <input type="text" class="form-control" id="usernameprofile" placeholder="USERNAME" required="required" readonly>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-12 col-sm-12">
-                <div class="row">
-                    <div class="input-group col-md-4 col-sm-4 col-4">
-                        <h6>FIRSTNAME</h6>
-                    </div>
-                    <div class="input-group col-md-4 col-sm-4 col-4">
-                        <input type="text" class="form-control" id="firstnameprofile" placeholder="FIRSTNAME" required="required" readonly>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-12 col-sm-12">
-                <div class="row">
-                    <div class="input-group col-md-4 col-sm-4 col-4">
-                        <h6>LASTNAME</h6>
-                    </div>
-                    <div class="input-group col-md-4 col-sm-4 col-4">
-                        <input type="text" class="form-control" id="lastnameprofile" placeholder="LASTNAME" required="required" readonly>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-12 col-sm-12">
-                <div class="row">
-                    <div class="input-group col-md-4 col-sm-4 col-4">
-                        <h6>E-MAIL</h6>
-                    </div>
-                    <div class="input-group col-md-4 col-sm-4 col-4">
-                        <input type="text" class="form-control" id="emailprofile" placeholder="E-MAIL" required="required" readonly>
-                    </div>
-                </div>
-            </div>
 
-            <div class="form-group col-md-12 col-sm-12">
-                <div class="row">
-                    <div class="input-group col-md-4 col-sm-4 col-4">
-                        <h6>ROLE</h6>
-                    </div>
-                    <div class="input-group col-md-4 col-sm-4 col-4" id="selectRoleProfile"> 
-                        <input type="text" class="form-control" id="roleprofile" placeholder="ROLE" required="required" value="Admin" readonly>
+                    <div class="form-group">
+                        <button type="submit" id="saveEditAccount" data-dismiss="modal" class="btn btn-primary btn-block btn-lg">SAVE</button>
                     </div>
                 </div>
             </div>
-            <div id="editAccount">
-                <input type="button" class="fadeIn fourth" value="EDIT" onclick="$.fn.EditAccount()" >
-            </div>
-            <div id="formFooter">
-                <a class="underlineHover" href="#">สถาบันสารสนเทศ ทรัพยากรน้ำเเละการเกษตร</a>
-            </div>
-        </center>
-
+            <div class="modal-footer">สถาบันสารสนเทศ ทรัพยากรน้ำเเละเกษตร</div>
+        </div>
     </div>
 </div>
