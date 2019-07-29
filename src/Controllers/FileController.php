@@ -17,9 +17,13 @@ namespace App\Controllers;
                      header('Content-Type: text/xml');
                      readfile($file);
                     exit;
+                }else{
+                    header('Content-Type: application/json');
+                    http_response_code(404);
+                    echo json_encode(array("errorMessage"=>"file doesn't exist.","status"=>false)); 
                 }
             }else{
-                http_response_code(404);
+                http_response_code(400);
             }
        
         }

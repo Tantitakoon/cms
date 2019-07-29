@@ -201,41 +201,48 @@
 
     function displayMap() {
       let map = new google.maps.Map(document.getElementById('map'), {});
-      let nameFile = 'test.kml';
-      domainName = "http://demo-thaiwatertool.online/"
+      let nameFiles = [
+                      'test.kml','newkml.kml','test2.kml','test3.kml','test4.kml',
+                      'test5.kml' ,'test6.kml','test7.kml','test8.kml','test9.kml',
+                      'test10.kml'
+                      ];
+      //domainName = "http://demo-thaiwatertool.online/"
       console.log(domainName);
-      let src = joinUrl(domainName, `/cms/File/download?name=${nameFile}`);//'http://localhost/cms/File/download?name=air_traffic.kml';
+      for(let nameFile of nameFiles){
+        let src = joinUrl(domainName, `/cms/File/download?name=${nameFile}`);//'http://localhost/cms/File/download?name=air_traffic.kml';
 
 
-      map.addListener('click', (mapEvent) => {
-        clearMarkers();
-        changeTextLatLng(mapEvent.latLng);
-        placeMarker(map, mapEvent.latLng);
-      })
+          map.addListener('click', (mapEvent) => {
+            clearMarkers();
+            changeTextLatLng(mapEvent.latLng);
+            placeMarker(map, mapEvent.latLng);
+          })
 
-      let kmlLayer = new google.maps.KmlLayer({ url: src, map: map });
-      kmlLayer.addListener('click', (kmlEvent) => {
-        clearMarkers();
-        changeTextLatLng(kmlEvent.latLng);
-        kmlEvent.featureData.infoWindowHtml = `${createBt3DMAP(kmlEvent.latLng)}   ${createBtPointCould(kmlEvent.latLng)}`;
+          let kmlLayer = new google.maps.KmlLayer({ url: src, map: map });
+          kmlLayer.addListener('click', (kmlEvent) => {
+            clearMarkers();
+            changeTextLatLng(kmlEvent.latLng);
+            kmlEvent.featureData.infoWindowHtml = `${createBt3DMAP(kmlEvent.latLng)}   ${createBtPointCould(kmlEvent.latLng)}`;
 
-        placeMarker(map, kmlEvent.latLng);
+            placeMarker(map, kmlEvent.latLng);
 
-      });
+          });
 
-      function placeMarker(map, location) {
-        var marker = new google.maps.Marker({
-          position: location,
-          map: map
-        });
-        markers.push(marker)
+          function placeMarker(map, location) {
+            var marker = new google.maps.Marker({
+              position: location,
+              map: map
+            });
+            markers.push(marker)
 
-        // var infowindow = new google.maps.InfoWindow({
-        //   content: `${createBt3DMAP(location)}   ${createBtPointCould(location)}`
-        // });
+            // var infowindow = new google.maps.InfoWindow({
+            //   content: `${createBt3DMAP(location)}   ${createBtPointCould(location)}`
+            // });
 
-        // infowindow.open(map, marker);
+            // infowindow.open(map, marker);
+          }
       }
+        
     }
 
     function clearMarkers() {
