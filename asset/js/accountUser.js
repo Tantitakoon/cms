@@ -3,7 +3,7 @@ $(document).ready(function () {
     $.fn.initUserPrfile();
 });
 $.fn.initUserPrfile = function (value) {
-    $.get(`/cms/User/getCurrentUser`, function (response, status) {
+    $.get(`/cms/user/getCurrentUser`, function (response, status) {
         $("#usernameprofile").html(`<span>${response.data.user_name}</span>`);
         $("#emailprofile").html(`<span>${response.data.user_email}</span>`);
         $("#firstnameprofile").html(`<span>${response.data.user_firstname}</span>`);

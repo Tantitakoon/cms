@@ -7,6 +7,7 @@
     use App\Controllers\UserController;
     use App\Controllers\FileController;
     use App\Controllers\Controller;
+    use App\Controllers\MapController;
     class Routes {
      
         function routerView(){  
@@ -16,8 +17,8 @@
                 IndexController::isLogin();
             });
             Route::set('/cms/map',function(){
-                //Controller::CheckLogin("main.html");
-                  Controller::CheckLogin("obgit.html");
+                  Controller::getDomain();
+                  Controller::CheckLogin("obgit.php");
             });
             Route::set('/cms/viewPotree',function(){
                 PotreeController::renderProtree();
@@ -36,7 +37,7 @@
             });
             Route::set('/cms/mapObgit',function(){
                 Controller::getDomain();
-                Controller::CreateView("obgit.html");
+                Controller::CreateView("obgit.php");
             });
             Route::set('/cms/admin',function(){
                 Controller::CheckLogin("adminV2.html");
@@ -53,8 +54,9 @@
                 }else{
                     Http::notFoundRequest();
                 }
-                
             });
+
+        
 
             
         }
@@ -98,14 +100,17 @@
             Route::set('/cms/potree/search',function(){
                 PotreeController::search();
             });
-            Route::set('/cms/User/getUser',function(){
+            Route::set('/cms/user/getUser',function(){
                 UserController::getUser();
             });
-            Route::set('/cms/User/getCurrentUser',function(){
+            Route::set('/cms/user/getCurrentUser',function(){
                 UserController::getCurrentUser();
             });
-            Route::set('/cms/File/download',function(){
+            Route::set('/cms/file/download',function(){
                  FileController::getKML();
+            });
+            Route::set('/cms/map/getByProvince',function(){
+                MapController::getByProvince();
             });
         }
 
