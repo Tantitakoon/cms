@@ -71,31 +71,31 @@
         }
 
         function postApi(){
-            Route::set('/cms/User/login',function(){
+            Route::set('/cms/user/login',function(){
                 UserController::login();
             });
-            Route::set('/cms/User/logout',function(){
+            Route::set('/cms/user/logout',function(){
                 UserController::logout();
             });
-            Route::set('/cms/User/resetPassword',function(){
+            Route::set('/cms/user/resetPassword',function(){
                 UserController::resetPassword();
             });
-            Route::set('/cms/User/updatePassword',function(){
+            Route::set('/cms/user/updatePassword',function(){
                 UserController::updatePassword();
             });
-            Route::set('/cms/User/insertUser',function(){
+            Route::set('/cms/user/insertUser',function(){
                 UserController::insertUser();
             });
-            Route::set('/cms/User/deleteUser',function(){
+            Route::set('/cms/user/deleteUser',function(){
                 UserController::deleteUser();
             });
-            Route::set('/cms/User/updateUser',function(){
+            Route::set('/cms/user/updateUser',function(){
                 UserController::updateUser();
             });
         }
 
         function getApi(){
-            Route::set('/cms/Potree/search',function(){
+            Route::set('/cms/potree/search',function(){
                 PotreeController::search();
             });
             Route::set('/cms/User/getUser',function(){

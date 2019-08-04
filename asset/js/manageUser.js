@@ -47,7 +47,7 @@ $("#saveEditUser").click(function () {
     let role = $("#editroleuser").val()
     let ID = $("#editID").val()
 
-    $.post("/cms/User/updateUser", { "user_name": user_name, "user_email": user_email, "user_firstname": user_firstname, "user_lastname": user_lastname, "user_role": role }, function (result) {
+    $.post("/cms/user/updateUser", { "user_name": user_name, "user_email": user_email, "user_firstname": user_firstname, "user_lastname": user_lastname, "user_role": role }, function (result) {
         if (result.status == true) {
         
             $.fn.alertSuccess(result.message)
@@ -82,7 +82,7 @@ $.fn.createRemoveUserInformation = function (value) {
 
 }
 $.fn.removeUserInformation = function (value) {
-    $.post("/cms/User/deleteUser", { "user_name": value }, function (result) {
+    $.post("/cms/user/deleteUser", { "user_name": value }, function (result) {
         if (result.status == true) {
             $.fn.alertSuccess(result.message)
             $(`#${value}`).empty();

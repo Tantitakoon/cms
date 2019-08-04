@@ -55,7 +55,7 @@ $(document).ready(function () {
       flag = false
     }
     if (flag) {
-      $.post("/cms/User/insertUser", { "user_name": username, "user_email": email, "user_firstname": firstname, "user_lastname": lastname, "user_password": password, "user_role": role }, function (result) {
+      $.post("/cms/user/insertUser", { "user_name": username, "user_email": email, "user_firstname": firstname, "user_lastname": lastname, "user_password": password, "user_role": role }, function (result) {
         if (result.status == true) {
         
           $.fn.alertSuccess(result.message)

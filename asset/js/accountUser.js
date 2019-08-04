@@ -31,7 +31,7 @@ $.fn.EditAccount = function () {
 $("#saveEditAccount").click(function () {
 
 
-    $.post("/cms/User/updateUser", { "user_name": $("#editusername").val(), "user_email": $("#editemail").val(), "user_firstname":$("#editfirstname").val(), "user_lastname":  $("#editlastname").val(), "user_role":  $("#editroleuser").val()}, function (result) {
+    $.post("/cms/user/updateUser", { "user_name": $("#editusername").val(), "user_email": $("#editemail").val(), "user_firstname":$("#editfirstname").val(), "user_lastname":  $("#editlastname").val(), "user_role":  $("#editroleuser").val()}, function (result) {
         if (result.status == true) {
             $.fn.alertSuccess(result.message)
             myAccount.user_name = $("#editusername").val()
