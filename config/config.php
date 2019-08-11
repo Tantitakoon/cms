@@ -11,7 +11,7 @@ if($domainName== "localhost"){
   $configs['DB_DATABASE'] = 'nextcloudwatertool';
   $configs['HOSTNAME'] = 'http://localhost';
   $configs['PATH_DOWNLOAD'] = '/app/downloadFile/kml/';
-}else if($domainName== "chaibwoot.no-ip.org"){
+}else if($domainName== "chaibwoot.no-ip.org" || $domainName == "118.173.233.163"){
   $configs['DB_USERNAME'] = 'nextclouduser';
   $configs['DB_PASSWORD'] = 'ratana4';
   $configs['DB_DATABASE'] = 'nextcloud';

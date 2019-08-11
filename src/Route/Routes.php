@@ -12,18 +12,32 @@
         function routerView(){  
             if(!Http::isGet()) return; 
             Route::set('/cms/',function(){
-                IndexController::CreateView("index.php");
+                /*IndexController::CreateView("index.php");
+                IndexController::isLogin();*/
+                IndexController::CreateView("indexV2.php");
+                IndexController::isLogin();
+            });
+            Route::set('/cms/v2',function(){
+                IndexController::CreateView("indexV2.php");
                 IndexController::isLogin();
             });
             Route::set('/cms/map',function(){
                 //Controller::CheckLogin("main.html");
-                  Controller::CheckLogin("obgit.html");
+                  //Controller::CheckLogin("obgit.html");
+                  Controller::CreateView("obgit.html");
+            });
+            Route::set('/cms/v2/map',function(){
+                //Controller::CheckLogin("main.html");
+                  Controller::CreateView("obgit.html");
             });
             Route::set('/cms/viewPotree',function(){
                 PotreeController::renderProtree();
             });
             Route::set('/cms/downLoadWork',function(){
                 Controller::CreateView("downLoadWork.html");
+            });
+            Route::set('/cms/allPage',function(){
+                Controller::CreateView("allPage.html");
             });
             Route::set('/cms/handleBatchSystem',function(){
                 Controller::CheckLogin("handleBatchSystem.html");
