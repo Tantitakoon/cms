@@ -25,12 +25,12 @@
     
 </head>
 <body>
-	
+
 	<div class="limiter">
     
         <!--div class="container-login100" style="background-image: url('./asset/img/background01.jpg');"-->
         <div class="container-login100 animated fadeInDown slower-8s"  >
-            <a id="backToLogin" href="#"><i  class="backToLogin material-icons">keyboard_backspace</i></a>
+            <a id="backToLogin" href="#"><i  class="backToLogin material-icons">reply</i></a>
 			<div class="wrap-login100">
                
 				<form class="login100-form validate-form">

@@ -192,7 +192,8 @@
     position: relative;
     left: 39px;
     top: -225px;
-    color: black
+    color: #696969;
+    font-size: 2.0rem;
    }
 
    button.login.btn.btn-primary.btn-lg.btn-block {
@@ -469,6 +470,13 @@
   [ Responsive ]*/
   
   @media (max-width: 576px) {
+    i.backToLogin.material-icons {
+      position: relative;
+      left: -145px;
+      top: 182px;
+      color: #696969;
+      font-size: 2.0rem;
+     }
     .wrap-login100 {
       padding: 55px 15px 37px 15px;
     }
