@@ -29,16 +29,17 @@
             });
             Route::set('/cms/v2/map',function(){
                 //Controller::CheckLogin("main.html");
-                  Controller::CreateView("obgit.html");
+                  Controller::CheckLogin("obgit.html");
             });
             Route::set('/cms/viewPotree',function(){
                 PotreeController::renderProtree();
             });
             Route::set('/cms/downLoadWork',function(){
-                Controller::CreateView("downLoadWork.html");
+                Controller::CheckLogin("downLoadWork.html");
             });
             Route::set('/cms/allPage',function(){
-                Controller::CreateView("allPage.html");
+                Controller::CheckLogin("allPage.html");
+              //  Controller::CreateView("allPage.html");
             });
             Route::set('/cms/handleBatchSystem',function(){
                 Controller::CheckLogin("handleBatchSystem.html");
@@ -47,11 +48,11 @@
                 Controller::CheckLogin("listProcessBatch.html");
             });
             Route::set('/cms/contact',function(){
-                Controller::CreateView("contact.html");
+                Controller::CheckLogin("contact.html");
             });
             Route::set('/cms/mapObgit',function(){
                 Controller::getDomain();
-                Controller::CreateView("obgit.html");
+                Controller::CheckLogin("obgit.html");
             });
             Route::set('/cms/admin',function(){
                 Controller::CheckLogin("adminV2.html");

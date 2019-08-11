@@ -46,7 +46,7 @@ $(document).ready(function () {
         $("#backToLogin").show();
         $("#contentLogin").empty();
         $("#contentLogin").append(` <div class="wrap-input100 validate-input" data-validate = "Enter username">
-                                      <input class="input100" type="text" name="username" placeholder="Email">
+                                      <input class="input100" type="text" name="username" id = "emailUser" placeholder="Email">
                                       <span class="focus-input100" data-placeholder="&#xf207;"></span>
                                     </div>
                                     <div class="container-login100-form-btn">
@@ -86,6 +86,7 @@ $(document).ready(function () {
 
     $.fn.handleResetPassword = function(){
         let emailUser =  $('#emailUser').val()
+        console.log(emailUser)
         if(emailUser){
             $.post("./User/resetPassword",{email:emailUser},(resp)=>{
                 let decodeJSON = resp;
@@ -96,7 +97,8 @@ $(document).ready(function () {
                         'message': 'Send Email Success',
                         'position': 'right'
                     });
-                    $('#loginModal').modal('toggle');
+                    window.location.href = '/cms/';
+                  //  $('#loginModal').modal('toggle');
                 }else{
                     $.dreamAlert({
                         'type': 'error',
