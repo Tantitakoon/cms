@@ -23,8 +23,9 @@
             });
             Route::set('/cms/map',function(){
                 //Controller::CheckLogin("main.html");
-                  //Controller::CheckLogin("obgit.html");
-                  Controller::CreateView("obgit.html");
+                  Controller::getDomain();
+                  Controller::CheckLogin("obgit.html");
+                //  Controller::CreateView("obgit.html");
             });
             Route::set('/cms/v2/map',function(){
                 //Controller::CheckLogin("main.html");

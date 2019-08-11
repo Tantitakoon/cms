@@ -202,11 +202,11 @@
     function displayMap() {
       let map = new google.maps.Map(document.getElementById('map'), {});
       let nameFiles = [
-                      'test.kml','newkml.kml','test2.kml','test3.kml','test4.kml',
-                      'test5.kml' ,'test6.kml','test7.kml','test8.kml','test9.kml',
-                      'test10.kml'
+                      'test.kml'//,'newkml.kml','test2.kml','test3.kml','test4.kml',
+                      //'test5.kml' ,'test6.kml','test7.kml','test8.kml','test9.kml',
+                      //'test10.kml'
                       ];
-      //domainName = "http://demo-thaiwatertool.online/"
+      domainName = "http://demo-thaiwatertool.online/"
       console.log(domainName);
       for(let nameFile of nameFiles){
         let src = joinUrl(domainName, `/cms/File/download?name=${nameFile}`);//'http://localhost/cms/File/download?name=air_traffic.kml';
