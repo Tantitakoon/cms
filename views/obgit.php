@@ -17,13 +17,14 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
   <!-- Custom styles for this template -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="asset/css/simple-sidebar.css" rel="stylesheet">
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB2go0vTmolhjUXN4nCTcAZe9-9afNqR8&callback=displayMap">
-
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB2go0vTmolhjUXN4nCTcAZe9-9afNqR8">
+  //<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB2go0vTmolhjUXN4nCTcAZe9-9afNqR8&callback=displayMap">
   </script>
   
 </head>
@@ -45,7 +46,17 @@
               <span class="input-group-text">CITY</span>
             </div>
             <select class="form-control" id="province">
-              <option>กรุงเทพ</option>
+              <option>select</option>
+              <?php
+                 use App\Api\Map;
+                 $provinces = Map::getAllProvince();
+                 if(is_array($provinces)){
+                    foreach ($provinces as $value){ 
+                        echo "<option>$value</option>";
+                    }
+                 }
+               
+              ?>
             </select>
           </div>
         </a>
@@ -54,8 +65,8 @@
             <div class="input-group-prepend">
               <span class="input-group-text">File Name</span>
             </div>
-            <select class="form-control" id="province">
-              <option>Velodyne001</option>
+            <select class="form-control" id="fileName">
+              <option>select</option>
             </select>
           </div>
         </a>
@@ -64,7 +75,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text">Pano ID</span>
             </div>
-            <select class="form-control" id="province">
+            <select class="form-control" id="panoID">
               <option>205</option>
             </select>
           </div>
@@ -89,10 +100,10 @@
 
         </a>
         <a href="#" class="list-group-item list-group-item-action">
-          <div class="row" style="text-align:center;">
+         <!-- <div class="row" style="text-align:center;">
             <button style="position:absolute;" type="button" class="btn btn-dark ml-3" id="btMultiple">Open multiple</button>
-            <!-- <button type="button" class="btn btn-dark  ml-3" id="btPointCloud">POINT COULD</button> -->
-          </div>
+            <button type="button" class="btn btn-dark  ml-3" id="btPointCloud">POINT COULD</button> 
+          </div>-->
 
         </a>
 
@@ -116,7 +127,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="/cms/allPage"><i class="material-icons" style="font-size:30px;color: blue">keyboard_backspace</i>
+              <a class="nav-link" href="/cms"><i class="material-icons" style="font-size:30px;color: blue">keyboard_backspace</i>
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -136,6 +147,13 @@
   <script>
     let markers = []
     let isDisplayMulti = false;
+    $( "#province" ).change(function() {
+          let provinceName = $("#province").val();
+          if(![null,undefined,"select"].includes(provinceName)){
+            $.get(`./map/getByProvince?provinceName=${provinceName}`,cbSelectProvince)
+          }
+    });
+ 
     $("#menu-toggle").click(function (e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
@@ -147,15 +165,20 @@
       } else {
         displayMulti();
       }
-
-
     })
     $('#btPointCloud').click(() => {
       $("#map").html(` <div class="embed-responsive embed-responsive-16by9 ">
                <iframe class="embed-responsive-item" src="./viewPotree?path=f1519_0005_test" allowfullscreen></iframe>
            </div>`)
-
     })
+    function cbSelectProvince(resp){
+        let optionsTxt = "<option>select</option>"
+        if(![null,undefined].includes(resp)){
+           optionsTxt += resp.reduce((accumulator, currentValue) => accumulator + `<option>${currentValue}</option>`,"");
+           displayMap(resp);
+        }
+        $('#fileName').html(optionsTxt);
+    }
     function hideMulti() {
       let mapDom = $('#map');
       let panoDom = $('#pano');
@@ -191,60 +214,49 @@
             alert(`it dosen't avaliable !!!`);
           }
         });
-
       } else {
         alert("Click on a map");
       }
     }
-
-
-
-    function displayMap() {
+    function displayMap(nameFiles=[]) {
       let map = new google.maps.Map(document.getElementById('map'), {});
-      let nameFiles = [
-                      'test.kml'//,'newkml.kml','test2.kml','test3.kml','test4.kml',
-                      //'test5.kml' ,'test6.kml','test7.kml','test8.kml','test9.kml',
-                      //'test10.kml'
-                      ];
-      domainName = "http://demo-thaiwatertool.online/"
+      /*let nameFiles = [
+                      'test.kml','newkml.kml','test2.kml','test3.kml','test4.kml',
+                      'test5.kml' ,'test6.kml','test7.kml','test8.kml','test9.kml',
+                      'test10.kml'"testNonthaburi.kml","testNonthaburi1.kml"
+                      ];*/
+      //domainName = "http://demo-thaiwatertool.online/"
+      //console.log(nameFiles)
       console.log(domainName);
       for(let nameFile of nameFiles){
-        let src = joinUrl(domainName, `/cms/File/download?name=${nameFile}`);//'http://localhost/cms/File/download?name=air_traffic.kml';
-
-
+        let src = joinUrl(domainName, `/cms/file/download?name=${nameFile}`);//'http://localhost/cms/file/download?name=air_traffic.kml';
+          //console.log(src);
           map.addListener('click', (mapEvent) => {
             clearMarkers();
             changeTextLatLng(mapEvent.latLng);
             placeMarker(map, mapEvent.latLng);
           })
-
           let kmlLayer = new google.maps.KmlLayer({ url: src, map: map });
           kmlLayer.addListener('click', (kmlEvent) => {
             clearMarkers();
             changeTextLatLng(kmlEvent.latLng);
             kmlEvent.featureData.infoWindowHtml = `${createBt3DMAP(kmlEvent.latLng)}   ${createBtPointCould(kmlEvent.latLng)}`;
-
             placeMarker(map, kmlEvent.latLng);
-
           });
-
           function placeMarker(map, location) {
             var marker = new google.maps.Marker({
               position: location,
               map: map
             });
             markers.push(marker)
-
             // var infowindow = new google.maps.InfoWindow({
             //   content: `${createBt3DMAP(location)}   ${createBtPointCould(location)}`
             // });
-
             // infowindow.open(map, marker);
           }
       }
         
     }
-
     function clearMarkers() {
       for (let markerr of markers) markerr.setMap(null)
       markers = []
@@ -252,16 +264,13 @@
     function createBt3DMAP(location) {
       return `<button class ="btn btn-info" onclick = "window.open('/cms/panoView?lat=${location.lat()}&lng=${location.lng()}')" >3D MAP</button>`
     }
-
     function createBtPointCould(location) {
       return `<button class ="btn btn-info" onclick = "window.open('./viewPotree?path=f1519_0005_test&lat=${location.lat()}&lng=${location.lng()}')" >POINT CLOUD</button>`
     }
-
     function changeTextLatLng(location) {
       document.getElementById("latitude").innerHTML = location.lat();
       document.getElementById("longitude").innerHTML = location.lng();
     }
-
     function joinUrl(text1, text2) {
       let result = "";
       text1 = text1.trim();
@@ -271,7 +280,6 @@
       } else result = (text2.startsWith("/")) ? text1 + text2 : text1 + "/" + text2;
       return result;
     }
-
     function pathJoin(parts, sep) {
       var separator = sep || '/';
       var replace = new RegExp(separator + '{1,}', 'g');

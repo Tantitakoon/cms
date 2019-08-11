@@ -54,7 +54,7 @@ $(document).ready(function () {
     $.fn.loginSubmit = function () {
         let body = { username: $('#username').val(), password: $('#password').val() };
         if (body.username && body.password) {
-            $.post("./User/login", body, (resp) => {
+            $.post("./user/login", body, (resp) => {
                 let decodeJSON = resp;
                 let { status } = decodeJSON;
                 if (status) {
@@ -83,7 +83,7 @@ $(document).ready(function () {
         let emailUser =  $('#emailUser').val()
         console.log(emailUser)
         if(emailUser){
-            $.post("./User/resetPassword",{email:emailUser},(resp)=>{
+            $.post("./user/resetPassword",{email:emailUser},(resp)=>{
                 let decodeJSON = resp;
                 let {status} = decodeJSON;
                 if(status){

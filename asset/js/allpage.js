@@ -1,7 +1,7 @@
 $(document).ready(function () {
     
     $.fn.logout = function(){
-        $.post("./User/logout", {}, (resp) => {
+        $.post("./user/logout", {}, (resp) => {
         
             let decodeJSON = resp;
             let { status } = decodeJSON;

@@ -7,29 +7,30 @@
     use App\Controllers\UserController;
     use App\Controllers\FileController;
     use App\Controllers\Controller;
+    use App\Controllers\MapController;
     class Routes {
      
         function routerView(){  
             if(!Http::isGet()) return; 
             Route::set('/cms/',function(){
-                /*IndexController::CreateView("index.php");
-                IndexController::isLogin();*/
-                IndexController::CreateView("indexV2.php");
+              
+               // IndexController::CreateView("indexV2.php");
+                //IndexController::isLogin();
                 IndexController::isLogin();
             });
-            Route::set('/cms/v2',function(){
+            /*Route::set('/cms/v2',function(){
                 IndexController::CreateView("indexV2.php");
                 IndexController::isLogin();
-            });
+            });*/
             Route::set('/cms/map',function(){
                 //Controller::CheckLogin("main.html");
                   Controller::getDomain();
-                  Controller::CheckLogin("obgit.html");
+                  Controller::CheckLogin("obgit.php");
                 //  Controller::CreateView("obgit.html");
             });
             Route::set('/cms/v2/map',function(){
                 //Controller::CheckLogin("main.html");
-                  Controller::CheckLogin("obgit.html");
+                  Controller::CheckLogin("obgit.php");
             });
             Route::set('/cms/viewPotree',function(){
                 PotreeController::renderProtree();
@@ -52,7 +53,7 @@
             });
             Route::set('/cms/mapObgit',function(){
                 Controller::getDomain();
-                Controller::CheckLogin("obgit.html");
+                Controller::CheckLogin("obgit.php");
             });
             Route::set('/cms/admin',function(){
                 Controller::CheckLogin("adminV2.html");
@@ -87,41 +88,44 @@
         }
 
         function postApi(){
-            Route::set('/cms/User/login',function(){
+            Route::set('/cms/user/login',function(){
                 UserController::login();
             });
-            Route::set('/cms/User/logout',function(){
+            Route::set('/cms/user/logout',function(){
                 UserController::logout();
             });
-            Route::set('/cms/User/resetPassword',function(){
+            Route::set('/cms/user/resetPassword',function(){
                 UserController::resetPassword();
             });
-            Route::set('/cms/User/updatePassword',function(){
+            Route::set('/cms/user/updatePassword',function(){
                 UserController::updatePassword();
             });
-            Route::set('/cms/User/insertUser',function(){
+            Route::set('/cms/user/insertUser',function(){
                 UserController::insertUser();
             });
-            Route::set('/cms/User/deleteUser',function(){
+            Route::set('/cms/user/deleteUser',function(){
                 UserController::deleteUser();
             });
-            Route::set('/cms/User/updateUser',function(){
+            Route::set('/cms/user/updateUser',function(){
                 UserController::updateUser();
             });
         }
 
         function getApi(){
-            Route::set('/cms/Potree/search',function(){
+            Route::set('/cms/potree/search',function(){
                 PotreeController::search();
             });
-            Route::set('/cms/User/getUser',function(){
+            Route::set('/cms/user/getUser',function(){
                 UserController::getUser();
             });
-            Route::set('/cms/User/getCurrentUser',function(){
+            Route::set('/cms/user/getCurrentUser',function(){
                 UserController::getCurrentUser();
             });
-            Route::set('/cms/File/download',function(){
+            Route::set('/cms/file/download',function(){
                  FileController::getKML();
+            });
+            Route::set('/cms/map/getByProvince',function(){
+                MapController::getByProvince();
             });
         }
 

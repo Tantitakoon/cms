@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 $.fn.editUserInformation = function (value,row) {
   
-    $.get(`/cms/User/getUser?userName=${value}`, function (response, status) {
+    $.get(`/cms/user/getUser?userName=${value}`, function (response, status) {
      
         $("#editusername").val(response.data[0].user_name)
         $("#editemail").val(response.data[0].user_email)
@@ -17,7 +17,7 @@ $.fn.editUserInformation = function (value,row) {
 
 $.fn.initUserInformation = function () {
     let row = 1 ;
-    $.get("/cms/User/getUser", function (response, status) {
+    $.get("/cms/user/getUser", function (response, status) {
         if (status == "success") {
             $.each(response.data, function (key, value) {
                 $("#userTable").append(`
@@ -47,7 +47,7 @@ $("#saveEditUser").click(function () {
     let role = $("#editroleuser").val()
     let ID = $("#editID").val()
 
-    $.post("/cms/User/updateUser", { "user_name": user_name, "user_email": user_email, "user_firstname": user_firstname, "user_lastname": user_lastname, "user_role": role }, function (result) {
+    $.post("/cms/user/updateUser", { "user_name": user_name, "user_email": user_email, "user_firstname": user_firstname, "user_lastname": user_lastname, "user_role": role }, function (result) {
         if (result.status == true) {
         
             $.fn.alertSuccess(result.message)
@@ -82,7 +82,7 @@ $.fn.createRemoveUserInformation = function (value) {
 
 }
 $.fn.removeUserInformation = function (value) {
-    $.post("/cms/User/deleteUser", { "user_name": value }, function (result) {
+    $.post("/cms/user/deleteUser", { "user_name": value }, function (result) {
         if (result.status == true) {
             $.fn.alertSuccess(result.message)
             $(`#${value}`).empty();

@@ -3,7 +3,7 @@ $(document).ready(function () {
     $.fn.initUserPrfile();
 });
 $.fn.initUserPrfile = function (value) {
-    $.get(`/cms/User/getCurrentUser`, function (response, status) {
+    $.get(`/cms/user/getCurrentUser`, function (response, status) {
         $("#usernameprofile").html(`<span>${response.data.user_name}</span>`);
         $("#emailprofile").html(`<span>${response.data.user_email}</span>`);
         $("#firstnameprofile").html(`<span>${response.data.user_firstname}</span>`);
@@ -31,7 +31,7 @@ $.fn.EditAccount = function () {
 $("#saveEditAccount").click(function () {
 
 
-    $.post("/cms/User/updateUser", { "user_name": $("#editusername").val(), "user_email": $("#editemail").val(), "user_firstname":$("#editfirstname").val(), "user_lastname":  $("#editlastname").val(), "user_role":  $("#editroleuser").val()}, function (result) {
+    $.post("/cms/user/updateUser", { "user_name": $("#editusername").val(), "user_email": $("#editemail").val(), "user_firstname":$("#editfirstname").val(), "user_lastname":  $("#editlastname").val(), "user_role":  $("#editroleuser").val()}, function (result) {
         if (result.status == true) {
             $.fn.alertSuccess(result.message)
             myAccount.user_name = $("#editusername").val()

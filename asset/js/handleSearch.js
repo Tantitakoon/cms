@@ -9,7 +9,7 @@ $(document).ready(function () {
    
 
     $("#btSearch").click(function () {
-        $.get("./Potree/search",{},(resp)=>{
+        $.get("./potree/search",{},(resp)=>{
             try{
                 let results = resp;
                // console.log(results);

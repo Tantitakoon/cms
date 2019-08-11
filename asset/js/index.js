@@ -2,7 +2,7 @@
 $(document).ready(function () {
     $("#backTOLogin").hide(); 
      $("#logout").click(function () {
-        $.post("./User/logout", {}, (resp) => {
+        $.post("./user/logout", {}, (resp) => {
 
             let decodeJSON = resp;
             let { status } = decodeJSON;
@@ -64,7 +64,7 @@ $.fn.loginSubmit = function () {
         let body = { username: $('#username').val(), password: $('#password').val() };//{ username: "auttapon", password: "tonstory" };
       //  console.log(body);
         if (body.username && body.password) {
-            $.post("./User/login", body, (resp) => {
+            $.post("./user/login", body, (resp) => {
                 let decodeJSON = resp;
                 let { status } = decodeJSON;
                 if (status) {
@@ -161,7 +161,7 @@ function createLogIn() {
 function handleResetPassword(){
     let emailUser =  $('#emailUser').val()
     if(emailUser){
-        $.post("./User/resetPassword",{email:emailUser},(resp)=>{
+        $.post("./user/resetPassword",{email:emailUser},(resp)=>{
          //   console.log(resp)
             let decodeJSON = resp;
             let {status} = decodeJSON;
