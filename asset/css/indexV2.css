@@ -178,7 +178,7 @@
     padding: 55px 55px 37px 55px;
   
     background: #9152f8;
-    background: -webkit-linear-gradient(top, #fff, #fff);
+    background: -webkit-linear-gradient(top, #F8F8FF, #fff);
     background: -o-linear-gradient(top, #696969,#696969);
     background: -moz-linear-gradient(top, #696969, #696969);
     background: linear-gradient(top, #696969,#696969);
@@ -191,7 +191,7 @@
   i.backToLogin.material-icons {
     position: relative;
     left: 55px;
-    top: -161px;
+    top: -211px;
     color: #696969;
     font-size: 2.0rem;
    }
@@ -222,7 +222,7 @@
     width: 240px;
     height: 240px;
     border-radius: 50%;
-    background-color:#F0FFFF;
+    background-color:#fff;
     margin: 20px auto;
   }
   
@@ -473,7 +473,7 @@
     i.backToLogin.material-icons {
       position: relative;
       left: -145px;
-      top: 218px;
+      top: 180px;
       color: #696969;
       font-size: 2.0rem;
      }

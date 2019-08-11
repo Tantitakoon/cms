@@ -37,10 +37,10 @@
 			<div class="wrap-login100">
                  
 				<form class="login100-form validate-form">
-                <div class="shadow-sm p-3 mb-5 bg-white rounded"><h2 class="page title"><img class="page image"src="./asset/img/index.jpg">HII Online Post Processing System</h2></div>
-					<!--span class="login100-form-logo">
+              
+					<span class="login100-form-logo">
 						<img src="./asset/img/index.jpg">
-					</span-->
+					</span>
                      <div id="contentLogin">
                         <div class="wrap-input100 validate-input" data-validate = "Enter username">
                             <input class="input100 shadow-sm bg-white rounded" type="text" name="username" id="username" placeholder="Username">
