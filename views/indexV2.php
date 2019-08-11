@@ -12,6 +12,7 @@
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <!-- css login IndexV2-->
     <link rel="stylesheet" type="text/css" href="./asset/css/indexV2.css">
     <!-- end-->
@@ -26,7 +27,9 @@
 <body>
 	
 	<div class="limiter">
-        <div class="container-login100" style="background-image: url('./asset/img/background01.jpg');">
+    
+        <!--div class="container-login100" style="background-image: url('./asset/img/background01.jpg');"-->
+        <div class="container-login100 animated fadeInDown slower-8s"  >
             <a id="backToLogin" href="#"><i  class="backToLogin material-icons">keyboard_backspace</i></a>
 			<div class="wrap-login100">
                
