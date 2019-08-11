@@ -14,21 +14,16 @@ $(document).ready(function () {
         $("#contentLogin").empty();
         $("#contentLogin").append(`
         <div class="wrap-input100 validate-input" data-validate="Enter username">
-            <input class="input100" type="text" name="username" id="username" placeholder="Username">
+            <input class="input100 shadow-sm bg-white rounded" type="text" name="username" id="username" placeholder="Username">
                 <span class="focus-input100" data-placeholder="&#xf207;"></span>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Enter password">
-                <input class="input100" type="password" name="pass" id="password"  placeholder="Password">
+                <input class="input100 shadow-sm bg-white rounded" type="password" name="pass" id="password"  placeholder="Password">
                     <span class="focus-input100" data-placeholder="&#xf191;"></span>
         </div>
 
-        <div class="contact100-form-checkbox">
-                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                    <label class="label-checkbox100" for="ckb1">
-                            Remember me
-                 </label>
-        </div>
+      
         <div class="container-login100-form-btn">
                 <button type="button" class="login btn btn-primary btn-lg btn-block"  onclick="$.fn.loginSubmit()">เข้าสู่ระบบ</button>
         </div>
@@ -46,7 +41,7 @@ $(document).ready(function () {
         $("#backToLogin").show();
         $("#contentLogin").empty();
         $("#contentLogin").append(` <div class="wrap-input100 validate-input" data-validate = "Enter username">
-                                      <input class="input100" type="text" name="username" id = "emailUser" placeholder="Email">
+                                      <input class="input100 shadow-sm bg-white rounded"  id = "emailUser" type="text" name="username" placeholder="Email">
                                       <span class="focus-input100" data-placeholder="&#xf207;"></span>
                                     </div>
                                     <div class="container-login100-form-btn">

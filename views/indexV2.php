@@ -29,31 +29,35 @@
 	<div class="limiter">
     
         <!--div class="container-login100" style="background-image: url('./asset/img/background01.jpg');"-->
+        
         <div class="container-login100 animated fadeInDown slower-8s"  >
+            
             <a id="backToLogin" href="#"><i  class="backToLogin material-icons">reply</i></a>
+            
 			<div class="wrap-login100">
-               
+                 
 				<form class="login100-form validate-form">
-					<span class="login100-form-logo">
+                <div class="shadow-sm p-3 mb-5 bg-white rounded"><h2 class="page title"><img class="page image"src="./asset/img/index.jpg">HII Online Post Processing System</h2></div>
+					<!--span class="login100-form-logo">
 						<img src="./asset/img/index.jpg">
-					</span>
+					</span-->
                      <div id="contentLogin">
                         <div class="wrap-input100 validate-input" data-validate = "Enter username">
-                            <input class="input100" type="text" name="username" id="username" placeholder="Username">
+                            <input class="input100 shadow-sm bg-white rounded" type="text" name="username" id="username" placeholder="Username">
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate="Enter password">
-                            <input class="input100" type="password" name="pass" id="password" placeholder="Password">
+                            <input class="input100 shadow-sm bg-white rounded" type="password" name="pass" id="password" placeholder="Password">
                             <span class="focus-input100" data-placeholder="&#xf191;"></span>
                         </div>
 
-                        <div class="contact100-form-checkbox">
+                        <!--div class="contact100-form-checkbox">
                             <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
                             <label class="label-checkbox100" for="ckb1">
                                 Remember me
                             </label>
-                        </div>
+                        </div-->
                     
 
 					<div class="container-login100-form-btn">
