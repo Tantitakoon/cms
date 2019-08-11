@@ -85,15 +85,15 @@
   textarea:focus::-moz-placeholder { color:transparent; }
   textarea:focus:-ms-input-placeholder { color:transparent; }
   
-  input::-webkit-input-placeholder { color: #DCDCDC;}
-  input:-moz-placeholder { color: #DCDCDC;}
-  input::-moz-placeholder { color: #DCDCDC;}
-  input:-ms-input-placeholder { color: #DCDCDC;}
+  input::-webkit-input-placeholder { color:#778899;}
+  input:-moz-placeholder { color: #778899;}
+  input::-moz-placeholder { color: #778899;}
+  input:-ms-input-placeholder { color: #778899;}
   
-  textarea::-webkit-input-placeholder { color: #DCDCDC;}
-  textarea:-moz-placeholder { color: #DCDCDC;}
-  textarea::-moz-placeholder { color: #DCDCDC;}
-  textarea:-ms-input-placeholder { color: #DCDCDC;}
+  textarea::-webkit-input-placeholder { color:#778899;}
+  textarea:-moz-placeholder { color:#778899;}
+  textarea::-moz-placeholder { color: #778899;}
+  textarea:-ms-input-placeholder { color: #778899;}
   
   label {
     margin: 0;
@@ -179,9 +179,9 @@
   
     background: #9152f8;
     background: -webkit-linear-gradient(top, #F8F8FF, #fff);
-    background: -o-linear-gradient(top, #696969,#696969);
-    background: -moz-linear-gradient(top, #696969, #696969);
-    background: linear-gradient(top, #696969,#696969);
+    background: -o-linear-gradient(top, #F8F8FF, #fff);
+    background: -moz-linear-gradient(top, #F8F8FF, #fff);
+    background: linear-gradient(top, #F8F8FF, #fff);
   }
   
   
