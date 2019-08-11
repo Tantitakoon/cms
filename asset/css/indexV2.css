@@ -38,7 +38,7 @@
   
   a:hover {
       text-decoration: none;
-    color: #fff;
+    color: #696969;
   }
   
   /*---------------------------------------------*/
@@ -85,15 +85,15 @@
   textarea:focus::-moz-placeholder { color:transparent; }
   textarea:focus:-ms-input-placeholder { color:transparent; }
   
-  input::-webkit-input-placeholder { color: #fff;}
-  input:-moz-placeholder { color: #fff;}
-  input::-moz-placeholder { color: #fff;}
-  input:-ms-input-placeholder { color: #fff;}
+  input::-webkit-input-placeholder { color: #DCDCDC;}
+  input:-moz-placeholder { color: #DCDCDC;}
+  input::-moz-placeholder { color: #DCDCDC;}
+  input:-ms-input-placeholder { color: #DCDCDC;}
   
-  textarea::-webkit-input-placeholder { color: #fff;}
-  textarea:-moz-placeholder { color: #fff;}
-  textarea::-moz-placeholder { color: #fff;}
-  textarea:-ms-input-placeholder { color: #fff;}
+  textarea::-webkit-input-placeholder { color: #DCDCDC;}
+  textarea:-moz-placeholder { color: #DCDCDC;}
+  textarea::-moz-placeholder { color: #DCDCDC;}
+  textarea:-ms-input-placeholder { color: #DCDCDC;}
   
   label {
     margin: 0;
@@ -124,7 +124,7 @@
   a.forgotpassword {
     font-family: Poppins-Regular;
     font-size: 16px;
-    color: #e5e5e5;
+    color: #696969;
     line-height: 1.5;
   }
   
@@ -178,10 +178,10 @@
     padding: 55px 55px 37px 55px;
   
     background: #9152f8;
-    background: -webkit-linear-gradient(top, #fff, #66CCFF);
-    background: -o-linear-gradient(top, #fff,#66CCFF);
-    background: -moz-linear-gradient(top, #fff, #66CCFF);
-    background: linear-gradient(top, #fff,#66CCFF);
+    background: -webkit-linear-gradient(top, #fff, #fff);
+    background: -o-linear-gradient(top, #696969,#696969);
+    background: -moz-linear-gradient(top, #696969, #696969);
+    background: linear-gradient(top, #696969,#696969);
   }
   
   
@@ -190,8 +190,8 @@
  
   i.backToLogin.material-icons {
     position: relative;
-    left: 39px;
-    top: -225px;
+    left: 55px;
+    top: -161px;
     color: #696969;
     font-size: 2.0rem;
    }
@@ -209,8 +209,8 @@
   }
   
   .login100-form-logo {
-    font-size: 60px; 
-    color: #333333;
+    font-size: 70px; 
+    color: #19ACB5;
   
     display: -webkit-box;
     display: -webkit-flex;
@@ -222,14 +222,14 @@
     width: 240px;
     height: 240px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color:#F0FFFF;
     margin: 20px auto;
   }
   
   .login100-form-title {
     font-family: Poppins-Medium;
     font-size: 30px;
-    color: #fff;
+    color: #696969;
     line-height: 1.2;
     text-align: center;
     text-transform: uppercase;
@@ -252,7 +252,7 @@
   .input100 {
     font-family: Poppins-Regular;
     font-size: 22px;
-    color: #fff;
+    color: #696969;
     line-height: 1.2;
     
     display: block;
@@ -287,13 +287,13 @@
     -moz-transition: all 0.4s;
     transition: all 0.4s;
   
-    background: #fff;
+    background:#696969;
   }
   
   .focus-input100::after {
     font-family: Material-Design-Iconic-Font;
     font-size: 22px;
-    color: #fff;
+    color: #696969;
   
     content: attr(data-placeholder);
     display: block;
@@ -352,7 +352,7 @@
   .label-checkbox100 {
     font-family: Poppins-Regular;
     font-size: 13px;
-    color: #fff;
+    color: #696969;
     line-height: 1.2;
   
     display: block;
@@ -378,7 +378,7 @@
     width: 16px;
     height: 16px;
     border-radius: 2px;
-    background: #fff;
+    background: #696969;
     left: 0;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -446,7 +446,7 @@
     width: 100%;
     height: 100%;
     border-radius: 25px;
-    background-color: #fff;
+    background-color:#696969;
     top: 0;
     left: 0;
     opacity: 1;
@@ -458,7 +458,7 @@
   }
   
   .login100-form-btn:hover {
-    color: #fff;
+    color: #696969;
   }
   
   .login100-form-btn:hover:before {
@@ -468,12 +468,12 @@
   
   /*------------------------------------------------------------------
   [ Responsive ]*/
-  
+
   @media (max-width: 576px) {
     i.backToLogin.material-icons {
       position: relative;
       left: -145px;
-      top: 182px;
+      top: 218px;
       color: #696969;
       font-size: 2.0rem;
      }
@@ -495,7 +495,7 @@
     content: attr(data-validate);
     position: absolute;
     max-width: 70%;
-    background-color: #fff;
+    background-color: #696969;
     border: 1px solid #c80000;
     border-radius: 2px;
     padding: 4px 25px 4px 10px;
@@ -552,6 +552,10 @@
     }
   }
   
-  
-  
+  h2.page.title {
+    color: #BEBE45;
+  }
+img.page.image {
+  width: 64px;
+}
   
