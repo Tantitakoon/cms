@@ -92,7 +92,7 @@ $(document).ready(function () {
                         'message': 'Send Email Success',
                         'position': 'right'
                     });
-                    window.location.href = '/cms/';
+                    window.location.href = '/cms/checkEmail';
                   //  $('#loginModal').modal('toggle');
                 }else{
                     $.dreamAlert({

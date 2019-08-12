@@ -16,7 +16,7 @@ if($domainName== "localhost"){
   $configs['DB_PASSWORD'] = 'ratana4';
   $configs['DB_DATABASE'] = 'nextcloud';
   $configs['HOSTNAME'] = 'https://chaibwoot.no-ip.org:4448';
-  $configs['PATH_DOWNLOAD'] = '/app/downloadFile/kml/';
+  $configs['PATH_DOWNLOAD'] = './asset/kml/';//'/app/downloadFile/kml/';
 } else if($domainName== "demo-thaiwatertool.online"){
   $configs['DB_USERNAME'] = 'moomin';
   $configs['DB_PASSWORD'] = ']y[l6fpvf';

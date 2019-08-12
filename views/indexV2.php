@@ -56,7 +56,7 @@
                         </div-->
                     
 					<div class="container-login100-form-btn">
-                    <button type="button" class="login btn btn-primary btn-lg btn-block" onclick="$.fn.loginSubmit()">เข้าสู่ระบบ</button>
+                    <button type="button" class="login btn btn-primary btn-lg btn-block" onclick="$.fn.loginSubmit()">Login</button>
 					</div>
 					<div class="text-center p-t-90">
 						<a class="forgotpassword" onclick="$.fn.forgotpassword()" href="#">

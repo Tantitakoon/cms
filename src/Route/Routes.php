@@ -39,7 +39,7 @@
                 Controller::CheckLogin("downLoadWork.html");
             });
             Route::set('/cms/allPage',function(){
-                Controller::CheckLogin("allPage.html");
+                Controller::CheckLogin("allpage.html");
               //  Controller::CreateView("allPage.html");
             });
             Route::set('/cms/handleBatchSystem',function(){
@@ -60,6 +60,9 @@
             });
             Route::set('/cms/resetPassword',function(){
                 UserController::checkResetPassword();  
+            });
+            Route::set('/cms/checkEmail',function(){
+                Controller::CreateView("contentResetpassword.html");
             });
             Route::set('/cms/panoView',function(){
                 if(isset($_GET['lat']) && isset($_GET['lng'])){
